@@ -29,3 +29,258 @@ $path: "/public/images/";
 }
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+.no-display {
+  display: none;
+}
+
+.back-link{
+	display:inline-block;
+	margin-top:30px;
+}
+
+.hint-text{
+	color: #666666;
+}
+
+.back-link:focus{
+	border:1px solid transparent;
+	margin:29px -1px -1px -1px;
+	outline-width:2px;
+}
+
+
+.heading-small-table{
+	font-size: 21px;
+  	font-family: "nta", Arial, sans-serif;
+  	font-weight: bold;
+  	text-transform: none;
+  	line-height: 1.5;
+}
+
+.table-title{
+	padding-top: 20px;
+}
+
+.table-summary-content{
+	font-weight: bold;
+}
+
+.table-summary-title{
+	font-weight: normal;
+}
+
+.alert-message{
+	display:block;
+	overflow:hidden;
+}
+
+
+.alert-message p{
+	margin-top:1.05263em;
+	margin-bottom:0;
+}
+
+
+.alert-message p:first-child {
+  margin-top:0;
+}
+
+.alert-complete{
+	border-left:4px solid #b10e1e;
+	clear:both;margin:0 0;
+	padding:1.05263em;
+}
+
+
+.alert-complete{
+	background-color:#28a197;
+	border-color:#28a197;
+	color:#fff;
+	max-width: 50%;
+}
+
+.alert-message-intro{
+	color: white;
+}
+
+.alert-number{
+	font-size: 42px;
+	font-weight: bold;
+}
+
+.button-secondary {
+  background-color: #666666;
+  position: relative;
+  display: -moz-inline-stack;
+  display: inline-block;
+  padding: .526315em .789473em .263157em;
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 0 2px 0 #003618;
+  -moz-box-shadow: 0 2px 0 #003618;
+  box-shadow: 0 2px 0 #003618;
+  font-size: 1em;
+  line-height: 1.25;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.button-secondary:visited {
+  background-color: #3b3b3b;
+}
+
+.button-secondary:hover, .button-secondary:focus {
+  background-color: #3b3b3b;
+}
+
+.button-secondary:active {
+  top: 2px;
+  -webkit-box-shadow: 0 0 0 #00823b;
+  -moz-box-shadow: 0 0 0 #00823b;
+  box-shadow: 0 0 0 #00823b;
+}
+
+.button-secondary:link, .button-secondary:hover, .button-secondary:focus, .button-secondary:visited {
+  color: #fff;
+}
+
+.button-secondary:before {
+  content: "";
+  height: 110%;
+  width: 100%;
+  display: block;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.button-secondary:active:before {
+  top: -10%;
+  height: 120%;
+}
+
+.button-secondary[rel="external"]:after {
+  display: none;
+  content: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 640px) {
+  .button-secondary {
+    width: 100%;
+  }
+}
+
+.button-secondary::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.button-secondary:focus {
+  outline: 3px solid #ffbf47;
+}
+
+.form-hint-small{
+	font-weight: normal;
+	color: #666666;
+	font-size: 0.8em;
+}
+
+.big-gap{
+	height: 10px;
+}
+
+.address{
+	background-color: #DEE0E2;
+	padding: 10px 10px 20px 30px;
+	max-width: 250px;
+}
+
+
+.title-input{
+	max-width: 250px;
+}
+
+
+.form-group-small{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.form-group-mid{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+
+.save-button {
+  background-color: #00823b;
+  position: relative;
+  display: -moz-inline-stack;
+  display: inline-block;
+  padding: .526315em .789473em .263157em;
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-box-shadow: 0 2px 0 #003618;
+  -moz-box-shadow: 0 2px 0 #003618;
+  box-shadow: 0 2px 0 #003618;
+  font-size: 1em;
+  line-height: 1.25;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.save-button:visited {
+  background-color: #787878;
+}
+
+.date-form{
+    max-width: 100px;
+}
+
+.bullet{
+    margin-left: 30px;
+}
+
+.hint-text-radio{
+    color: black;
+}
+
+.grid-row {
+  margin: 0 !important;
+}
+
+
+
+/*Automatic CSS*/
+
