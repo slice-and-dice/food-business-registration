@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+
+	<div>
+		<a class="back-link" href="/reg-types/registration-type.html">Back to operator type</a>
+	</div>
+	<div class="grid-row">
+		<div class="column-two-thirds">
+
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">You have not selected an option below</a>
+					</li>
+				</ul>
+
+			</div>
+
+			<h1 class="heading-large">Operator details</h1>
+
+			<form method="get" class="form" action="/reg-pages/operator-address">
+
+				<div class="form-group">
+					<fieldset>
+
+						<div class="form-group">
+							<label class="form-label" for="fbo-first-name">First and middle names</label>
+							<input class="form-control" id="fbo-first-name" type="text" name="fbo-first-name">
+						</div>
+
+						<div class="form-group">
+							<label class="form-label" for="fbo-surname">Last name</label>
+							<input class="form-control" id="fbo-surname" type="text" name="fbo-surname">
+						</div>
+					</fieldset>
+				</div>
+
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+
+</main>
+
+{% endblock %}

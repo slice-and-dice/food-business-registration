@@ -1,0 +1,68 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+	<div>
+		<a class="back-link" href="/index.html"><a class="back-link" href="#" onclick="window.history.back()">Back</a></a>
+	</div>
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">You have not selected an option below</a>
+					</li>
+				</ul>
+
+			</div>
+
+			<h1 class="heading-medium">Who operates this business?</h1>
+
+			<form method="get" class="form" id="fsa-radio-button-form" action="/operator-type-redirect">
+				<div class="form-group">
+					<fieldset>
+
+						<legend>
+							<span class="error-message no-display">You have not selected one of the options below</span>
+						</legend>
+
+						<div class="multiple-choice">
+							<input id="radio-1" type="radio" name="operatorBusinessDetail" value="personOperatesBusiness">
+							<label for="radio-1">A person</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-2" type="radio" name="operatorBusinessDetail" value="companyOperatesBusiness">
+							<label for="radio-2">A company</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-3" type="radio" name="operatorBusinessDetail" value="charityOperatesBusiness">
+							<label for="radio-3">A charity</label>
+						</div>
+
+					</fieldset>
+				</div>
+				<div class="form-group">
+					<details>
+						<summary>
+							<span class="summary">Questions about types of operators</span>
+						</summary>
+						<div class="panel panel-border-narrow">
+							<p class="label"> Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate
+								strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world
+								view of disruptive innovation via workplace diversity and empowerment. </p>
+						</div>
+					</details>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

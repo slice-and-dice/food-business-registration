@@ -1,0 +1,201 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+  <div>
+    <a class="back-link" href="#" onclick="window.history.back()">Back</a>
+  </div>
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h2 class="heading-medium">
+        Please check that the details you entered are correct.
+      </h2>
+
+      <!--Name Details table-->
+      <!--Operator details-->
+      <table>
+        <tbody>
+          <tr>
+            <td class="bold">Operator details</td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>Registration type</td>
+            <td class="bold">New food business</td>
+          </tr>
+
+          <tr>
+            <td>Name</td>
+            <td class="bold">Jamie McKinnon</td>
+          </tr>
+
+          <tr>
+            <td>Operator type</td>
+            <td class="bold">I operate this food business</td>
+          </tr>
+
+          <tr>
+            <td>Operator home address</td>
+            <td class="bold">
+              <div>Hill Cottage</div>
+              <div>Wakefield</div>
+              <div>Leeds</div>
+              <div>LD7 5NE</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Contact number</td>
+            <td class="bold">
+              <div>07813 345673</div>
+              <div>
+                <label class="form-hint-small">Mobile</label>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Email address</td>
+            <td class="bold">jamie.mckinnon@gmail.com</td>
+          </tr>
+
+
+
+          <!--Establishment details-->
+
+          <tr>
+            <td class="bold">Establishment details</td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>Establishment name</td>
+            <td class="bold">Waterfront Sandwiches</td>
+          </tr>
+
+          <tr>
+            <td>Establishment address</td>
+            <td class="bold">
+              <div>13 Waterfront Units</div>
+              <div>Leeds</div>
+              <div>LD3 6BR</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Domestic premesis</td>
+            <td class="bold">No</td>
+          </tr>
+          <tr>
+            <td>Establishment email address</td>
+            <td class="bold">hello@waterfrontsandwiches.co.uk</td>
+          </tr>
+          <tr>
+            <td>Establishment phone number</td>
+            <td class="bold">01543 887153</td>
+          </tr>
+          <tr>
+            <td>Opened on</td>
+            <td class="bold">8 Dec 2017</td>
+          </tr>
+
+
+          <!--Food activities-->
+          <tr>
+              <td class="bold">Food activities</td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Customer type</td>
+              <td>
+                <div>Serves to</div>
+                <div class="bold">End consumers</div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Importing and Exporting</td>
+              <td class="bold">
+                <div>Importing</div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Business type</td>
+              <td class="bold">Cafe</td>
+            </tr>
+
+            <tr>
+              <td>Food activities</td>
+              <td class="bold">
+                <div>Open food</div>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>Description of food business</td>
+              <td class="bold">
+                <div>Sandwich shop preparing and selling sandwiches to local customers.</div>
+              </td>
+            </tr>
+
+        </tbody>
+      </table>
+
+      <!--Declaration	-->
+      <div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+        <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+          You have not selected one of the options below
+        </h2>
+
+        <!-- <p>
+            Optional description of the errors and how to correct them
+          </p> -->
+
+        <ul class="error-summary-list">
+          <li>
+            <a href="#example-personal-details">You have not selected an option below</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- <div class="form-group"> -->
+
+      <form id="#fsa-checkbox-form" action="/reg-pages/confirmation">
+        <div class="form-group">
+          <legend>
+            <h2 class="heading-medium">
+              Declaration
+            </h2>
+
+            <p>I declare that the information I have given on this form is correct and complete to the best of my knowledge
+              and belief.
+            </p>
+            <p>I will notify food authorities of any changes to the business, including closure, within 28 days of the change
+              happening.</p>
+            <p>I understand I will be required to verify this information on an annual basis and I will receive email reminders
+              to do this.</p>
+            <p class="heading-medium">By submitting this registration, I am agreeing to the above statements.</p>
+            <span class="error-message no-display">You have not ticked the box below</span>
+          </legend>
+          <div class="multiple-choice">
+            <input id="radio-1" type="checkbox" name="radio-group" value="Northern Ireland">
+            <label for="radio-1">I agree </label>
+          </div>
+        </div>
+        <div class="grid-row">
+          <input type="submit" class="button" value="Submit registration">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

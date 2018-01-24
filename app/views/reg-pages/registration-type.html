@@ -1,0 +1,58 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+	<div>
+		<a class="back-link" href="/index.html">Back to start</a>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">You have not selected an option below</a>
+					</li>
+				</ul>
+
+			</div>
+
+			<h1 class="heading-medium">What is your role in this food business?</h1>
+
+			<form method="get" class="form" id="fsa-radio-button-form" action="/registration-type-redirect">
+				<div class="form-group">
+					<fieldset>
+
+						<legend>
+							<span class="error-message no-display">You have not selected one of the options below</span>
+						</legend>
+
+						<div class="multiple-choice">
+							<input id="radio-1" type="radio" name="operatorDetail" value="operateBusinessSolely">
+							<label for="radio-1">I operate it as a sole trader</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-2" type="radio" name="operatorDetail" value="operateBusinessInPartnership">
+							<label for="radio-2">I operate it in a partnership</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-3" type="radio" name="operatorDetail" value="representPersonCharityCompanyOperator">
+							<label for="radio-3">I represent a person, charity or company which operates it</label>
+						</div>
+
+					</fieldset>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

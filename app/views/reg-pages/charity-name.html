@@ -1,0 +1,65 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+	<div class="grid-row">
+		<div class="column-two-thirds">
+
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">You have not selected an option below</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1 class="heading-large">Charity details</h1>
+
+			<form method="get" class="form" action="/reg-pages/operator-contact">
+				<div class="form-group">
+					<fieldset>
+						<div class="form-group">
+							<label class="form-label" for="fbo-name">Charity name</label>
+							<input class="form-control" id="fbo-name" type="text" name="fbo-name">
+						</div>
+
+						<div class="form-group">
+							<label class="form-label" for="fbo-company-number">Charity number</label>
+							<input class="form-control" id="fbo-company-number" type="text" name="fbo-company-number">
+						</div>
+					</fieldset>
+					<details>
+						<summary>
+							<span class="summary">Questions about charity numbers</span>
+						</summary>
+						<div class="panel panel-border-narrow">
+							<p class="label"> By law, if you set up a charity you must have applied to register it with the commission if it is a charitable incorporated
+								organisation (CIO) or its annual income is more than £5,000, unless it is a specific type of charity that doesn’t
+								have to register. The commission will take action to secure compliance if it identifies a charity which isn’t registered
+								but should be.
+							</p>
+
+							<p>If your charity isn’t a CIO and your income is under £5,000 you don’t have to register with the commission. You can
+								find your charity reference number by visiting the
+								<a href="http://beta.charitycommission.gov.uk/">Charity register.</a>
+							</p>
+						</div>
+					</details>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">You have not selected an option below</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1 class="heading-large">Establishment address</h1>
+			<!--Correct code-->
+
+			<form id="establishment-address-form" method="get" class="form" action="/reg-pages/establishment-address-details">
+				<fieldset>
+					<div class="form-group">
+						<label for="postcode">
+							<span class="form-label">Postcode</span>
+						</label>
+						<input class="form-control" name="postcode" id="postcode" type="text" autofocus>
+					</div>
+					<div class="form-group">
+						<label for="first-line">
+							<span class="form-label">Building name or number (optional)</span>
+						</label>
+						<input class="form-control" name="first-line" id="first-line" type="text" fsa-optional>
+					</div>
+					<div class="grid-row">
+						<a id="find-address-button" class="button" href="#" role="button">Find address</a>
+					</div>
+					<div class="form-group">
+						<div class="big-gap"> </div>
+					</div>
+					<details>
+							<summary>
+								<span class="summary">I don't know the address of this establishment</span>
+							</summary>
+							<div class="panel panel-border-narrow">
+									<div class="form-group">
+											<div class="multiple-choice">
+												<input id="radio-1" type="radio" name="radio-group" value="no-address">
+												<label for="radio-1">I don't know the address yet</label>
+											</div>
+											<div class="multiple-choice">
+												<input id="radio-2" type="radio" name="radio-group" value="no-postal-address">
+												<label for="radio-2">This establishment has no postal address eg. mobile food van </label>
+											</div>
+											<div class="multiple-choice">
+												<input id="radio-3" type="radio" name="radio-group" value="I do not have this information">
+												<label for="radio-3">I do not have this information</label>
+											</div>
+
+									</div>
+							</div>
+						</details>
+				</fieldset>
+				<div class="form-group">
+					<div class="big-gap"> </div>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}
