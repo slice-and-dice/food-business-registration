@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Register
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+  {% include "includes/breadcrumb.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <!--
+        Look in routes.js to see where this redirect is being picked up
+        Note that method="get"
+      -->
+      <form action="/establishment-details-redirect" method="post" class="form">
+
+        <div class="form-group">
+          <fieldset>
+
+            <legend>
+              <h1 class="heading-large">New food business details</h1>
+            </legend>
+
+            <!-- <div class="multiple-choice">
+              <input id="step1-option-1" type="radio" name="establishmentDetail" value="newBusinessRegistration">
+              <label for="step1-option-1">A new food business</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="step1-option-2" type="radio" name="establishmentDetail" value="updatingBusinessDetails">
+              <label for="step1-option-2">Updating details of an existing food business</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="step1-option-2" type="radio" name="establishmentDetail" value="closureOfBusiness">
+              <label for="step1-option-2">Closure of a registered food business</label>
+            </div> -->
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Save and continue">
+        </div>
+
+        <div class="form-group">
+          <p>
+            <a href="/">
+              Start again
+            </a>
+          </p>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</main>
+{% endblock %}

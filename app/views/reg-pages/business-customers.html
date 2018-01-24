@@ -1,0 +1,52 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">You have not selected an option below</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1 class="heading-large">Business activities</h1>
+
+			<form id="fsa-checkbox-form" method="get" class="form" action="/reg-pages/business-consumerfacing">
+				<div class="form-group">
+					<fieldset>
+						<legend>
+							<h3 class="heading-medium">Who will this establishment supply food to?</h3>
+							<span class="body-text">Select all that apply</span>
+							<span class="error-message no-display">You must select at least one option below</span>
+						</legend>
+
+						<div class="multiple-choice">
+							<input id="waste-type-1" name="businessSupplyCustomer" type="checkbox" value="supplyFoodToBusiness">
+							<label for="waste-type-1">It will supply food to other businesses</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="waste-type-2" name="businessSupplyCustomer" type="checkbox" value="supplyFoodToConsumer">
+							<label for="waste-type-2">It will supply food directly to end consumers</label>
+						</div>
+
+					</fieldset>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

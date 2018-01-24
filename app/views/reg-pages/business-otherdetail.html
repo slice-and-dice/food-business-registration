@@ -1,0 +1,60 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+	<div class="grid-row">
+		<div class="column-two-thirds">
+				<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+						<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+							You have not selected one of the options below
+						</h2>
+
+						<!-- <p>
+							Optional description of the errors and how to correct them
+						</p> -->
+
+						<ul class="error-summary-list">
+							<li><a href="#example-personal-details">You have not selected an option below</a></li>
+						</ul>
+
+					</div>
+			<h1 class="heading-large">Other details</h1>
+			<form id="fsa-radio-button-form-final-page" method="get" class="form" action="/reg-pages/summary-declaration">
+				<div class="form-group">
+					<label class="form-label" for="textarea">
+						Is there anything else you need to tell us about this establishment? (optional)
+					</label>
+					<textarea class="form-control form-control-3-4" name="textarea" id="textarea" rows="5" fsa-optional></textarea>
+				</div>
+				<div class="form-group">
+					<fieldset>
+
+						<legend>
+							<h1 class="heading-medium">Does the operator have previous experience in operating a food business?</h1>
+							<span class="error-message no-display">You have not selected one of the options below</span>
+						</legend>
+
+						<div class="multiple-choice">
+							<input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
+							<label for="radio-1">Yes</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+							<label for="radio-2">No</label>
+						</div>
+
+					</fieldset>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

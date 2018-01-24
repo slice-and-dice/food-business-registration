@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Register a food business
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  <div> <a class="back-link" href="/index.html"><a class="back-link" href="#" onclick="window.history.back()">Back</a></a> </div>
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h1 class="heading-large">
+        Register a food business
+      </h1>
+      <p>
+        All food businesses which regularly produce or serve food to the public need to be registered with their Local Authority. This service will capture registration information and send it to the correct local authority based on your trading location.</p>
+      <p>
+        Please answer these questions to the best of your abilities.
+      </p>
+
+      <p>
+        During this registration, you may come across a few specialist terms, which we have described below:
+      </p>
+      <p>
+        • A food business operator is the person, charity or company who makes the decisions about the food business, what it serves and how it operates.
+      </p>
+      <p>
+        • An establishment is the location of your food business. If it is a mobile food business, please use the location where it is normally stored overnight.
+      </p>
+
+      <form>
+        <div class="form-group">
+          <fieldset>
+
+            <form>
+              <div class="form-group">
+                <fieldset>
+
+                  <legend>
+                    <h1 class="heading-medium">What are you registering today?</h1>
+                  </legend>
+
+                  <div class="multiple-choice">
+                    <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
+                    <label for="radio-1">A new food business</label>
+                  </div>
+                  <div class="multiple-choice">
+                    <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+                    <label for="radio-2">An update to an existing food business</label>
+                  </div>
+                  <div class="multiple-choice">
+                    <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
+                    <label for="radio-3">Closure of a food business</label>
+                  </div>
+
+                </fieldset>
+              </div>
+            </form>
+
+            <div class="form-group">
+              <details>
+                <summary><span class="summary">Questions about types of operators</span></summary>
+                <div class="panel panel-border-narrow">
+                  <p class="label"> Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view
+                    of disruptive innovation via workplace diversity and empowerment. </p>
+                </div>
+              </details>
+            </div>
+
+            <div class="grid-row">
+              <a id="operator-continue-button" class="button button-start" href="./index" role="button">Begin registration</a>
+            </div>
+
+
+          </fieldset>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
