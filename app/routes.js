@@ -3,7 +3,8 @@ const router = express.Router()
 
 // Route index page
 router.get('/', function (req, res) {
-  res.render('index');
+  // res.render('index');
+  res.redirect('/reg-pages/start');
 });
 
 router.get('/start-submit-redirect', function (req, res) {
