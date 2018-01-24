@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Register
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+  {% include "includes/breadcrumb.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+        <div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+          <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+            You have not filled in all of the fields required
+          </h2>
+
+          <!-- <p>
+            Optional description of the errors and how to correct them
+          </p> -->
+
+          <ul class="error-summary-list">
+            <li id=""><a href="#fbo-first-name">You have not filled in the first and middle names field</a></li>
+            <li id=""><a href="#fbo-surname">You have not filled in the last name field</a></li>
+          </ul>
+
+        </div>
+
+      <form method="get" class="form">
+      <!-- <form class="form"> -->
+
+        <div class="form-group">
+          <fieldset>
+
+            <legend>
+              <h1 class="heading-large">Operator details</h1>
+            </legend>
+
+            <p>These details are collected for operators who are a person.</p>
+
+            <div class="form-group">
+              <label class="form-label" for="fbo-first-name">First and middle names</label>
+              <span class="error-message no-display">Enter all of your first and middle names</span>
+              <input class="form-control" id="fbo-first-name" type="text" name="fbo-first-name">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="fbo-surname">Last name</label>
+              <span class="error-message no-display">Enter your last name</span>
+              <input class="form-control" id="fbo-surname" type="text" name="fbo-surname">
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Save and continue">
+        </div>
+
+        <div class="form-group">
+          <p>
+            <a href="/">
+              Start again
+            </a>
+          </p>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</main>
+{% endblock %}

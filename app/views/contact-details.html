@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Register
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+
+  {% include "includes/breadcrumb.html" %}
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <form action="/establishment-details" method="post" class="form">
+
+        <div class="form-group">
+          <fieldset>
+
+            <legend>
+              <h1 class="heading-large">Contact details</h1>
+            </legend>
+
+            <div class="form-group">
+              <label class="form-label" for="fbo-phone-number">Phone number</label>
+              <input class="form-control" id="fbo-phone-number" type="text" name="fbo-phone-number">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="fbo-email">Email address</label>
+              <input class="form-control" id="fbo-email" type="text" name="fbo-email">
+            </div>
+
+          </fieldset>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Save and continue">
+        </div>
+
+        <div class="form-group">
+          <p>
+            <a href="/">
+              Start again
+            </a>
+          </p>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</main>
+{% endblock %}

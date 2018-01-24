@@ -1,0 +1,57 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+				<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+						<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+							You have not selected one of the options below
+						</h2>
+
+						<ul class="error-summary-list">
+							<li>
+								<a href="#example-personal-details">You have not selected an option below</a>
+							</li>
+						</ul>
+					</div>
+			<h1 class="heading-medium">When will this establishment begin trading?</h1>
+			<legend>
+				<p>Establishments begin trading when they first start serving or manufacturing food for customers.</p>
+			</legend>
+			<form method="get" class="form" action="/reg-pages/business-importexport">
+				<div class="form-group">
+					<fieldset>
+						<legend>
+							<span class="form-label-bold">What date will this establishment begin trading?</span>
+							<span class="form-hint">For example, 14 02 2018</span>
+							<span class="error-message no-display">You have not correctly put in the date</span>
+						</legend>
+						<div class="form-date">
+							<div class="form-group form-group-day">
+								<label class="form-label" for="dob-day">Day</label>
+								<input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+							</div>
+							<div class="form-group form-group-month">
+								<label class="form-label" for="dob-month">Month</label>
+								<input class="form-control" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+							</div>
+							<div class="form-group form-group-year">
+								<label class="form-label" for="dob-year">Year</label>
+								<input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="2018" max="2040">
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+
+	<div>
+		<a class="back-link" href="/reg-pages/operator-contact">Back to operator contact details</a>
+	</div>
+	<div class="grid-row">
+		<div class="column-two-thirds">
+
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">You have not selected an option below</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1 class="heading-large">New food business</h1>
+
+			<form id="establishment-name-form" method="get" class="form" action="/reg-pages/establishment-address">
+				<div class="form-group">
+					<label class="form-label" for="fbo-name">What is the trading name of this establishment?</label>
+					<input class="form-control" id="fbo-name" type="text" name="fbo-name">
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

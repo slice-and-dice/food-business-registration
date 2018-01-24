@@ -1,0 +1,53 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+					<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+						You have not selected one of the options below
+					</h2>
+
+					<ul class="error-summary-list">
+						<li>
+							<a href="#example-personal-details">You have not selected an option below</a>
+						</li>
+					</ul>
+				</div>
+			<h1 class="heading-large">Business activities</h1>
+			<form id="fsa-checkbox-form" method="get" class="form" action="/reg-pages/business-highrisk">
+				<div class="form-group">
+					<fieldset>
+						<legend>
+							<h3 class="heading-medium">What kind of activites will this food establishment do?</h3>
+							<span class="body-text">Select all that apply</span>
+							<span class="error-message no-display">You must select at least one option below</span>
+						</legend>
+						<div class="multiple-choice">
+							<input id="waste-type-1" name="waste-types" type="checkbox" value="waste-mines">
+							<label for="waste-type-1">Handling, preparation and cooking of open food to be served to customers.
+								<span class="form-hint">For example a restaurant, cafe or coffee shop serving sandwiches.</span>
+							</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
+							<label for="waste-type-2">Handling and selling of chilled or room temperature re-wrapped and re-packaged food.
+								<span class="form-hint">For example production of ready-to-eat meals, pre-packed sandwiches, bags of crisps and nuts etc.</span>
+							</label>
+						</div>
+
+					</fieldset>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}
