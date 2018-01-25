@@ -1,21 +1,10 @@
 /* global $ */
 
 $('#fsa-radio-button-form').submit(function (e) {
-  // e.preventDefault();
-
-  console.log('Radio form submitted');
 
   var inputs = $('[type="radio"]');
 
   var showErrorSummary = true;
-
-  // var radioForms = [];
-
-  // $.each(inputs, function(i, el) {
-  //   if($.inArray(el.name, radioForms) === -1) arr.push(el.name);
-  // });
-
-
 
   $.map(inputs, function (el, index) {
     if (el.checked === true) {
@@ -25,8 +14,6 @@ $('#fsa-radio-button-form').submit(function (e) {
 
   if (showErrorSummary === true) {
     e.preventDefault();
-
-    console.log("Should show error summary");
 
     $(".error-summary").removeClass("no-display");
     $(".error-message").removeClass("no-display");
@@ -90,9 +77,11 @@ $('#opening-date-form').submit(function (e) {
     e.preventDefault();
     $('#opening-date-form-group-container').addClass('form-group-error');
     $(".error-message").removeClass("no-display");
+    $(".error-summary").removeClass("no-display");
   } else {
     $('#opening-date-form-group-container').removeClass('form-group-error');
     $(".error-message").addClass("no-display");
+    $(".error-summary").addClass("no-display");
   }
 });
 
@@ -184,8 +173,7 @@ $('#establishment-address-details-form').submit(function(e) {
   }
 });
 
-// $('body').on('submit', 'form', function (e) {
-  $('#ltdcompany-name-form,#operator-contact-form,#establishment-name-form,#establishment-contact-form').submit(function (e) {
+  $('#ltdcompany-name-form,#operator-contact-form,#establishment-name-form,#establishment-contact-form,#soletrader-name-form,#operator-address-form').submit(function (e) {
 
   // On form submit, add hidden inputs for checkboxes so the server knows if
   // they've been unchecked. This means we can automatically store and update
@@ -239,6 +227,9 @@ $('#establishment-address-details-form').submit(function(e) {
       // }
 
       console.log('validationType:', validationType, ',!RegExp(rule).test(el.value)', !RegExp(rule).test(el.value), ',validationType && !RegExp(rule).test(el.value)', validationType && !RegExp(rule).test(el.value))
+      if (validationType === 'number' || validationType === 'telephone') {
+        el.value = el.value.replace(/ /g,'');
+      }
 
       if (!($(el).is("select")) && el.value.length === 0 && !optionalField && !validationType || (validationType && !RegExp(rule).test(el.value))) {
         e.preventDefault();
