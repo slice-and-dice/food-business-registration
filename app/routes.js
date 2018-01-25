@@ -1,3 +1,5 @@
+// import { read } from 'fs';
+
 const express = require('express')
 const router = express.Router()
 
@@ -8,16 +10,17 @@ router.get('/', function (req, res) {
 });
 
 router.get('/start-submit-redirect', function (req, res) {
-  var detail = req.query.businessDetail;
+  // var detail = req.query.businessDetail;
+  var detail = req.query.startUserRegisteringBusiness;
 
   switch(detail) {
-    case 'newBusinessRegistration':
+    case 'New food business':
       res.redirect('/reg-pages/registration-type')
       break;
-    case 'updatingBusinessDetails':
+    case 'Updating existing business':
       res.redirect('/reg-pages/updating-details-existing-food-business')
       break;
-    case 'closureOfBusiness':
+    case 'Closure of a food business':
       res.redirect('/reg-pages/closure-existing-registered-food-business')
       break;
     default:
@@ -27,16 +30,16 @@ router.get('/start-submit-redirect', function (req, res) {
 });
 
 router.get('/registration-type-redirect', function (req, res) {
-  var detail = req.query.operatorDetail;
+  var detail = req.query.registrationTypeOperatorDetail;
 
   switch(detail) {
-    case 'operateBusinessSolely':
+    case 'I operate this food business':
       res.redirect('/reg-pages/soletrader-name')
       break;
-    case 'operateBusinessInPartnership':
+    case 'I operate this business in a partnership':
       res.redirect('/reg-pages/soletrader-name')
       break;
-    case 'representPersonCharityCompanyOperator':
+    case 'I represent a person, charity or company which operates this business':
       res.redirect('/reg-pages/operator-type')
       break;
     default:
@@ -80,18 +83,75 @@ router.get('/opening-date-redirect', function (req, res) {
 });
 
 router.get('/business-customers-redirect', function (req, res) {
-  var detail = req.query.businessSupplyCustomer;
+  var detail = req.query.businessCustomersSupply;
 
   switch(detail) {
-    case 'supplyFoodToBusiness':
+    case 'Other businesses':
       res.redirect('/reg-pages/business-b2b')
       break;
-    case 'supplyFoodToConsumer':
+    case 'End consumers':
       res.redirect('/reg-pages/business-consumerfacing')
       break;
     default:
       res.render('index.html')
   }
+});
+
+router.get('/summary-declaration-redirect', function (req, res) {
+  console.log("req.session.data['businessCustomersSupply']", req.session.data['businessCustomersSupply']);
+  if (req.session.data['businessCustomersSupply'].length === 1 && req.session.data['businessCustomersSupply'][0] === 'Other businesses') {
+    req.session.data.businessCustomersSupplyLabel = 'Supplies';
+  } else {
+    req.session.data.businessCustomersSupplyLabel = 'Serves to';
+  }
+
+  // var monthMapping = {
+  //   "01": "Jan",
+  //   "1": "Jan",
+  //   "02": "Feb",
+  //   "2": "Feb",
+  //   "03": "Mar",
+  //   "3": "Mar",
+  //   "04": "Apr",
+  //   "4": "Apr",
+  //   "05": "May",
+  //   "5": "May",
+  //   "06": "Jun",
+  //   "6": "Jun",
+  //   "07": "Jul",
+  //   "7": "Jul",
+  //   "08": "Aug",
+  //   "8": "Aug",
+  //   "09": "Sep",
+  //   "9": "Sep",
+  //   "10": "Oct",
+  //   "10": "Oct",
+  //   "11": "Nov",
+  //   "11": "Nov",
+  //   "12": "Dec",
+  //   "12": "Dec"
+  // };
+
+  // var month = req.session.data['openingDateMonth'];
+
+  // req.session.data['openingDateMonth'] = monthMapping[month];
+
+  if (req.session.data['reuseOperatorContactDetails'] === 'yes' && req.session.data['establishmentContactTelephone'].length === 0 && req.session.data['establishmentContactEmail'].length === 0) {
+    req.session.data['establishmentContactTelephone'] = req.session.data['operatorContactTelephone'];
+    req.session.data['establishmentContactEmail'] = req.session.data['operatorContactEmail'];
+  }
+
+  if (req.session.data['establishmentAddressDoNotKnow'].length > 0) {
+    req.session.data['establishmentAddressLine1'] = '';
+    req.session.data['establishmentAddressLine2'] = '';
+    req.session.data['establishmentAddressPostcode'] = '';
+  } else {
+    req.session.data['establishmentAddressLine1'] = 'Petty France';
+    req.session.data['establishmentAddressLine2'] = 'London';
+    req.session.data['establishmentAddressDoNotKnow'] = '';
+  }
+
+  res.redirect('/reg-pages/summary-declaration');
 });
 
 // Branching
