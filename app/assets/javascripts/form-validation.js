@@ -93,7 +93,7 @@ $("#find-address-button").click(function (e) {
   var validRegex = RegExp(postcodeRegex).test(postcodeElement.value);
 
   if (validRegex) {
-    $(e.currentTarget).parent().append("<div class='big-gap'></div><div class='form-group'><select class='form-control'><option value='70 Petty France'>70 Petty France, London, SW1H 9EX</option><option value='71 Petty France'>71 Petty France, London, SW1H 9EX</option><option value='58 Petty France'>58 Petty France, London, SW1H 9EX</option></select></div>");
+    $(e.currentTarget).parent().append("<div class='big-gap'></div><div class='form-group'><select class='form-control'><option value='58 Petty France'>58 Petty France, London, SW1H 9EX</option><option value='70 Petty France'>70 Petty France, London, SW1H 9EX</option><option value='72 Petty France'>72 Petty France, London, SW1H 9EX</option></select></div>");
     $(postcodeElement).parent().removeClass('form-group-error')
   } else {
     $(".error-summary").removeClass("no-display");

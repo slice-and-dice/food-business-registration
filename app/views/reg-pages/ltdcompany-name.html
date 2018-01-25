@@ -16,7 +16,7 @@
 
 				<ul class="error-summary-list">
 					<li>
-						<a href="#example-personal-details">You have not selected an option below</a>
+						<a href="#example-personal-details">Somethings not right here, please check your answer before continuing</a>
 					</li>
 				</ul>
 			</div>
@@ -33,21 +33,14 @@
 						</div>
 
 						<div class="form-group">
-							<label class="form-label" for="fbo-company-number">Companies House number</label>
+							<label class="form-label" for="fbo-company-number">Companies House number
+									<span class="form-hint">Every limited company has to be registered with Companies House, and will have a company reference number. You can
+											find your company reference number </br>
+											<a href="https://beta.companieshouse.gov.uk/">by visiting the Companies House website.</a></span>
+							</label>
 							<input class="form-control" id="fbo-company-number" type="text" name="fbo-company-number" fsa-type="number">
 						</div>
 					</fieldset>
-					<details>
-							<summary>
-								<span class="summary">Questions about Companies House numbers</span>
-							</summary>
-							<div class="panel panel-border-narrow">
-								<p class="label"> Every limited company has to be registered with Companies House, and will have a company reference number. You can
-									find your company reference number by visiting the
-									<a href="https://beta.companieshouse.gov.uk/">Companies House website.</a>
-								</p>
-							</div>
-						</details>
 				</div>
 				<div class="grid-row">
 					<input type="submit" class="button" value="Save and continue">
