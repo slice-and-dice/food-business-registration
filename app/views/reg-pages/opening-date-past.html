@@ -14,7 +14,7 @@
 
 				<ul class="error-summary-list">
 					<li>
-						<a href="#example-personal-details">You have not selected an option below</a>
+						<a href="#example-personal-details">Somethings not right here, please check your answer before continuing</a>
 					</li>
 				</ul>
 			</div>
@@ -33,15 +33,16 @@
 						<div class="form-date">
 							<div class="form-group form-group-day">
 								<label class="form-label" for="dob-day">Day</label>
-								<input class="form-control" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" min="0" max="31">
+								<input class="form-control" id="dob-day" name="openingDateDay" type="number" pattern="[0-9]*" min="0" max="31">
 							</div>
 							<div class="form-group form-group-month">
 								<label class="form-label" for="dob-month">Month</label>
-								<input class="form-control" id="dob-month" name="dob-month" type="number" pattern="[0-9]*" min="0" max="12">
+								<input class="form-control" id="dob-month" name="openingDateMonth" type="number" pattern="[0-9]*" min="0" max="12">
 							</div>
 							<div class="form-group form-group-year">
 								<label class="form-label" for="dob-year">Year</label>
-								<input class="form-control" id="dob-year" name="dob-year" type="number" pattern="[0-9]*" min="0" max="2018">
+								<input class="form-control" id="dob-year" name="openingDateYear" type="number" pattern="[0-9]*" min="0" max="2018">
+								<input type="hidden" name="openingDateLabel" value="Opened on" />
 							</div>
 						</div>
 					</fieldset>
