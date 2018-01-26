@@ -257,3 +257,7 @@ $('#establishment-address-details-form').submit(function(e) {
   // e.preventDefault();
   console.log('\n\n')
 });
+
+$('#add-button').click(function(e) {
+  e.preventDefault();
+});
