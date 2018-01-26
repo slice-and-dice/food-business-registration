@@ -98,8 +98,8 @@ router.get('/business-customers-redirect', function (req, res) {
 });
 
 router.get('/summary-declaration-redirect', function (req, res) {
-  console.log("req.session.data['businessCustomersSupply']", req.session.data['businessCustomersSupply']);
-  if (req.session.data['businessCustomersSupply'].length === 1 && req.session.data['businessCustomersSupply'][0] === 'Other businesses') {
+  // console.log("req.session.data['businessCustomersSupply']", req.session.data['businessCustomersSupply']);
+  if (req.session.data['businessCustomersSupply'] && req.session.data['businessCustomersSupply'].length === 1 && req.session.data['businessCustomersSupply'][0] === 'Other businesses') {
     req.session.data.businessCustomersSupplyLabel = 'Supplies';
   } else {
     req.session.data.businessCustomersSupplyLabel = 'Serves to';
@@ -136,12 +136,12 @@ router.get('/summary-declaration-redirect', function (req, res) {
 
   // req.session.data['openingDateMonth'] = monthMapping[month];
 
-  if (req.session.data['reuseOperatorContactDetails'] === 'yes' && req.session.data['establishmentContactTelephone'].length === 0 && req.session.data['establishmentContactEmail'].length === 0) {
+  if (req.session.data['reuseOperatorContactDetails'] && req.session.data['reuseOperatorContactDetails'] === 'yes' && req.session.data['establishmentContactTelephone'] && req.session.data['establishmentContactTelephone'].length === 0 && req.session.data['establishmentContactEmail'] && req.session.data['establishmentContactEmail'].length === 0) {
     req.session.data['establishmentContactTelephone'] = req.session.data['operatorContactTelephone'];
     req.session.data['establishmentContactEmail'] = req.session.data['operatorContactEmail'];
   }
 
-  if (req.session.data['establishmentAddressDoNotKnow'].length > 0) {
+  if (req.session.data['establishmentAddressDoNotKnow'] && req.session.data['establishmentAddressDoNotKnow'].length > 0) {
     req.session.data['establishmentAddressLine1'] = '';
     req.session.data['establishmentAddressLine2'] = '';
     req.session.data['establishmentAddressPostcode'] = '';
