@@ -104,6 +104,29 @@
             <td>{{ data['openingDateLabel'] }}</td>
             <td class="bold">{{ data['openingDateDay'] }} {{ data['openingDateMonth'] }} {{ data['openingDateYear'] }}</td>
           </tr>
+          <tr>
+            <td>Opening days and hours</td>
+            <td class="bold">
+              {% if data['openingDaysIrregular'] === "Irregular opening hours" %}
+                <p>Irregular opening hours:</p>
+                <p>{{ data['openingDaysIrregularDescription'] }}</p> 
+              {% else %}
+              <ul>
+                {% for day in data['openingDays'] %}
+                  {% if day !== "_unchecked" %}
+                    <li>{{ day }}:
+                      {% if  data['openCloseSameTimes'] === "Yes" %}
+                        {{ data['openingHoursAll'] }} - {{ data['closingHoursAll'] }}
+                      {% else %}
+                        {{ data['openingHours' + day ] }} - {{ data['closingHours' + day ] }}
+                      {% endif %}
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </td>
+          </tr>
 
 
           <!--Food activities-->
