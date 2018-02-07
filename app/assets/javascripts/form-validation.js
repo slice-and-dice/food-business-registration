@@ -263,7 +263,7 @@ $('#opening-days-form').submit(function(e) {
   var radioButtons = $('[type="radio"]');
   var checkBoxes = $('[type="checkbox"]');
 
-  let buttonChecked;
+  var buttonChecked;
 
   $.each(radioButtons, function (i, el) {
     console.log('el.checked', el.checked);
@@ -326,7 +326,7 @@ $('#opening-hours-router-form').submit(function(e) {
 
   var radioButtons = $('[type="radio"]');
 
-  let buttonChecked;
+  var buttonChecked;
 
   $.each(radioButtons, function (i, el) {
     console.log('el.checked', el.checked);
@@ -369,8 +369,8 @@ function checkIfTimeFormat() {
   var hourInputs = $('.hourInput');
   var minuteInputs = $('.minuteInput');
 
-  let inputEmpty = false;
-  let notTimeFormat = false;
+  var inputEmpty = false;
+  var notTimeFormat = false;
 
   $.each(inputFields, function (i, el) {
     if (el.value === '') {
