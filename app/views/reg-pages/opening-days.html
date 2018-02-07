@@ -1,0 +1,87 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+					</li>
+				</ul>
+			</div>
+
+			<form id="opening-days-form" method="get" class="form" action="/opening-days-redirect">
+				<div id="opening-days-form-group-1" class="form-group">
+					<fieldset>
+						<legend>
+								<h2 class="heading-large">Opening days</h2>
+						</legend>
+				
+						<div class="multiple-choice">
+							<input id="day-1" name="openingDays" type="checkbox" value="Monday">
+							<label for="day-1">Monday</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="day-2" name="openingDays" type="checkbox" value="Tuesday">
+							<label for="day-2">Tuesday</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="day-3" name="openingDays" type="checkbox" value="Wednesday">
+							<label for="day-3">Wednesday</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="day-4" name="openingDays" type="checkbox" value="Thursday">
+							<label for="day-4">Thursday</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="day-5" name="openingDays" type="checkbox" value="Friday">
+							<label for="day-5">Friday</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="day-6" name="openingDays" type="checkbox" value="Saturday">
+							<label for="day-6">Saturday</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="day-7" name="openingDays" type="checkbox" value="Sunday">
+							<label for="day-7">Sunday</label>
+						</div>
+
+						<div class="multiple-choice">
+							<br>
+							<p>Or</p>
+						</div>
+					</fieldset>
+				</div>
+
+				<div id="opening-days-form-group-2" class="form-group">
+					<fieldset>
+						<div class="multiple-choice">
+							<input id="irregular-hours" name="openingDaysIrregular" type="radio" value="Irregular opening hours">
+							<label for="irregular-hours">This establishment has irregular opening hours</label>
+						</div>
+						<br><br>
+						<div id="irregular-description-container" class="no-display">
+							<label class="form-label" for="irregular-description">Please provide a description of when this establishment is open and trading.</label>
+							<input class="form-control" id="irregular-description" type="text" name="openingDaysIrregularDescription">
+						</div>
+					</fieldset>
+				</div>
+
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

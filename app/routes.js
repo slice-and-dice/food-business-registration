@@ -29,6 +29,35 @@ router.get('/start-submit-redirect', function (req, res) {
 
 });
 
+router.get('/opening-hours-redirect', function (req, res) {
+  var detail = req.query.openCloseSameTimes;
+
+  switch(detail) {
+    case 'Yes':
+      res.redirect('/reg-pages/opening-hours-same-time')
+      break;
+    case 'No':
+      res.redirect('/reg-pages/opening-hours-individual')
+      break;
+    default:
+      res.render('index.html')
+  }
+
+});
+
+router.get('/opening-days-redirect', function (req, res) {
+  var detail = req.query.openingDaysIrregular;
+
+  switch(detail) {
+    case 'Irregular opening hours':
+      res.redirect('/reg-pages/business-importexport')
+      break;
+    default:
+      res.redirect('/reg-pages/opening-hours-router')
+  }
+
+});
+
 router.get('/registration-type-redirect', function (req, res) {
   var detail = req.query.registrationTypeOperatorDetail;
 

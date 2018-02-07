@@ -1,0 +1,47 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+				<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+					<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+						You have not selected one of the options below
+					</h2>
+					<ul class="error-summary-list">
+						<li>
+							<a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+						</li>
+					</ul>
+				</div>
+				
+				<form id="opening-hours-router-form" method="get" class="form" action="/opening-hours-redirect">
+					<div id="opening-days-form-group-1" class="form-group">
+						<fieldset>
+							<legend>
+									<h2 class="heading-large">Opening hours</h2>
+								<span class="body-text">Will this establishment open and close at the same time each day?</span>
+							</legend>
+							<div class="multiple-choice">
+								<input id="yes" name="openCloseSameTimes" type="radio" value="Yes">
+								<label for="yes">Yes</label>
+							</div>
+							<div class="multiple-choice">
+								<input id="no" name="openCloseSameTimes" type="radio" value="No">
+								<label for="no">No</label>
+							</div>
+						</fieldset>
+					</div>
+	
+					<div class="grid-row">
+						<input type="submit" class="button" value="Save and continue">
+					</div>
+				</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

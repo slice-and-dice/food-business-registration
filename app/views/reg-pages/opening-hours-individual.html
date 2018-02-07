@@ -1,0 +1,68 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+		<div>
+			<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+		</div>
+	
+		<div class="grid-row">
+			<div class="column-two-thirds">
+				<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+					<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+						You have not selected one of the options below
+					</h2>
+					<ul class="error-summary-list">
+						<li>
+							<a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+						</li>
+					</ul>
+				</div>
+				
+				<form id="opening-hours-individual-form" method="get" class="form" action="/reg-pages/business-importexport">
+					<div id="opening-days-form-group-1" class="form-group">
+						<fieldset>
+							<legend>
+								<h2 class="heading-large">Opening hours</h2>
+								<h4 class="heading-small">What times will this establishment be open?</h4>
+							</legend>
+							<br>
+							<span class="form-hint">For example 10:00 to 19:00</span>
+							<br>
+
+							{% for day in data['openingDays'] %}
+								{% if day !== "_unchecked" %}
+									<div>
+										<h4 class="bold">{{ day }} opening hours</h4>
+										<div class="opening-hours-inputs">
+											<label class="form-label" for="opensTime{{ day }}">Opens at</label>
+											<div class="form-control custom-timepicker" id="opensTime{{ day }}">
+												<input id="opensHour{{ day }}" name="openingHours{{ day }}" type="text">
+												<span>:</span>
+												<input id="opensMinute{{ day }}" name="openingHours{{ day }}" type="text">
+											</div>
+										</div>
+										<div class="closing-hours-inputs">
+											<label class="form-label" for="closesTime{{ day }}">Closes at</label>
+											<div class="form-control custom-timepicker" id="closesTime{{ day }}">
+													<input id="closesHour{{ day }}" name="closingHours{{ day }}" type="text">
+													<span>:</span>
+													<input id="closesMinute{{ day }}" name="closingHours{{ day }}" type="text">
+												</div>
+										</div>
+									</div>
+									<br><br>
+								{% endif %}
+							{% endfor %}
+
+						</fieldset>
+					</div>
+	
+					<div class="grid-row">
+						<input type="submit" class="button" value="Save and continue">
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

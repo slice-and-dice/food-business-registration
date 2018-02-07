@@ -257,3 +257,68 @@ $('#establishment-address-details-form').submit(function(e) {
   // e.preventDefault();
   console.log('\n\n')
 });
+
+$('#opening-days-form').submit(function(e) {
+
+  var radioButtons = $('[type="radio"]');
+  var checkBoxes = $('[type="checkbox"]');
+
+  let buttonChecked;
+
+  $.each(radioButtons, function (i, el) {
+    console.log('el.checked', el.checked);
+    if (el.checked && $('#irregular-description').val() !== "") {
+      buttonChecked = true;
+    }
+  });
+
+  $.each(checkBoxes, function (i, el) {
+    console.log('el.checked', el.checked);
+    if (el.checked) {
+      buttonChecked = true;
+    }
+  });
+
+  if(buttonChecked !== true) {
+    e.preventDefault();
+
+    $(".error-summary").removeClass("no-display");
+    $(".error-message").removeClass("no-display");
+    $("#opening-days-form-group-1").addClass('form-group-error');
+    $("#opening-days-form-group-2").addClass('form-group-error');
+  }
+});
+
+$('#irregular-hours').change(function(e) {
+  // remove all ticks from the checkboxes
+  var checkBoxes = $('[type="checkbox"]');
+  $.each(checkBoxes, function (i, el) {
+    el.checked = false;
+  });
+
+  // display the additional text box
+  $('#irregular-description-container').removeClass("no-display");
+});
+
+$('[type="checkbox"]').change(function(e) {
+  // remove all ticks from the radio buttons
+  var radioButtons = $('[type="radio"]');
+  $.each(radioButtons, function (i, el) {
+    el.checked = false;
+  });
+
+  // hide the additional text box
+  $('#irregular-description-container').addClass("no-display");
+});
+
+$('.custom-timepicker input').keyup(function(e) {
+
+  var stringLength = e.target.value.length;
+  if(stringLength === 2) {
+    $(this).nextAll('input').first().focus();
+  }
+  else if(stringLength > 2) {
+    e.target.value = e.target.value.slice(0, 2);
+    $(this).nextAll('input').first().focus();
+  }
+});
