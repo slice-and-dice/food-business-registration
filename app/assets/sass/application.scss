@@ -213,6 +213,33 @@ $path: "/public/images/";
 	max-width: 250px;
 }
 
+.opening-hours-inputs {
+  display: inline-block;
+  margin-right: 6rem;
+}
+
+.closing-hours-inputs {
+  display: inline-block;
+}
+
+.custom-timepicker {
+  display: flex;
+  width: 8.5rem;
+  justify-content: space-between;
+  input {
+    text-align: center;
+    width: 3rem;
+    border: none;
+    background-color: transparent;
+    // &:focus {
+    //   outline: none;
+    // }
+  }
+  span {
+    font-weight: bold;
+  }
+}
+
 
 .form-group-small{
     -webkit-box-sizing: border-box;
