@@ -19,7 +19,7 @@
 				</div>
 				
 				<form id="opening-hours-individual-form" method="get" class="form" action="/reg-pages/business-importexport">
-					<div id="opening-days-form-group-1" class="form-group">
+					<div id="opening-hours-individual-form-group" class="form-group">
 						<fieldset>
 							<legend>
 								<h2 class="heading-large">Opening hours</h2>
@@ -36,17 +36,17 @@
 										<div class="opening-hours-inputs">
 											<label class="form-label" for="opensTime{{ day }}">Opens at</label>
 											<div class="form-control custom-timepicker" id="opensTime{{ day }}">
-												<input id="opensHour{{ day }}" name="openingHours{{ day }}" type="text">
+												<input class="hourInput" id="opensHour{{ day }}" name="openingHours{{ day }}" type="text">
 												<span>:</span>
-												<input id="opensMinute{{ day }}" name="openingHours{{ day }}" type="text">
+												<input class="minuteInput" id="opensMinute{{ day }}" name="openingHours{{ day }}" type="text">
 											</div>
 										</div>
 										<div class="closing-hours-inputs">
 											<label class="form-label" for="closesTime{{ day }}">Closes at</label>
 											<div class="form-control custom-timepicker" id="closesTime{{ day }}">
-													<input id="closesHour{{ day }}" name="closingHours{{ day }}" type="text">
+													<input class="hourInput" id="closesHour{{ day }}" name="closingHours{{ day }}" type="text">
 													<span>:</span>
-													<input id="closesMinute{{ day }}" name="closingHours{{ day }}" type="text">
+													<input class="minuteInput" id="closesMinute{{ day }}" name="closingHours{{ day }}" type="text">
 												</div>
 										</div>
 									</div>

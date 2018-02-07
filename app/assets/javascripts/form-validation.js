@@ -312,7 +312,6 @@ $('[type="checkbox"]').change(function(e) {
 });
 
 $('.custom-timepicker input').keyup(function(e) {
-
   var stringLength = e.target.value.length;
   if(stringLength === 2) {
     $(this).nextAll('input').first().focus();
@@ -322,3 +321,73 @@ $('.custom-timepicker input').keyup(function(e) {
     $(this).nextAll('input').first().focus();
   }
 });
+
+$('#opening-hours-router-form').submit(function(e) {
+
+  var radioButtons = $('[type="radio"]');
+
+  let buttonChecked;
+
+  $.each(radioButtons, function (i, el) {
+    console.log('el.checked', el.checked);
+    if (el.checked) {
+      buttonChecked = true;
+    }
+  });
+
+  if(buttonChecked !== true) {
+    e.preventDefault();
+
+    $(".error-summary").removeClass("no-display");
+    $(".error-message").removeClass("no-display");
+    $("#opening-hours-router-form-group").addClass('form-group-error');
+  }
+});
+
+$('#opening-hours-same-time-form').submit(function(e) {
+  if(checkIfTimeFormat().inputEmpty === true || checkIfTimeFormat().notTimeFormat === true) {
+    e.preventDefault();
+
+    $(".error-summary").removeClass("no-display");
+    $(".error-message").removeClass("no-display");
+    $("#opening-hours-same-time-form-group").addClass('form-group-error');
+  }
+});
+
+$('#opening-hours-individual-form').submit(function(e) {
+  if(checkIfTimeFormat().inputEmpty === true || checkIfTimeFormat().notTimeFormat === true) {
+    e.preventDefault();
+
+    $(".error-summary").removeClass("no-display");
+    $(".error-message").removeClass("no-display");
+    $("#opening-hours-individual-form-group").addClass('form-group-error');
+  }
+});
+
+function checkIfTimeFormat() {
+  var inputFields = $('.custom-timepicker input');
+  var hourInputs = $('.hourInput');
+  var minuteInputs = $('.minuteInput');
+
+  let inputEmpty = false;
+  let notTimeFormat = false;
+
+  $.each(inputFields, function (i, el) {
+    if (el.value === '') {
+      inputEmpty = true;
+    }
+  });
+
+  $.each(hourInputs, function (i, el) {
+    if (Number(el.value) >= 24 || isNaN(el.value)) {
+      notTimeFormat = true;
+    }
+  });
+
+  $.each(minuteInputs, function (i, el) {
+    if (Number(el.value) >= 60 || isNaN(el.value)) {
+      notTimeFormat = true;
+    }
+  });
+  return {inputEmpty, notTimeFormat};
+}
