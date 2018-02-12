@@ -391,3 +391,7 @@ function checkIfTimeFormat() {
   });
   return {inputEmpty, notTimeFormat};
 }
+
+$('#add-button').click(function(e) {
+  e.preventDefault();
+});
