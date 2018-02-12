@@ -258,6 +258,140 @@ $('#establishment-address-details-form').submit(function(e) {
   console.log('\n\n')
 });
 
+$('#opening-days-form').submit(function(e) {
+
+  var radioButtons = $('[type="radio"]');
+  var checkBoxes = $('[type="checkbox"]');
+
+  var buttonChecked;
+
+  $.each(radioButtons, function (i, el) {
+    console.log('el.checked', el.checked);
+    if (el.checked && $('#irregular-description').val() !== "") {
+      buttonChecked = true;
+    }
+  });
+
+  $.each(checkBoxes, function (i, el) {
+    console.log('el.checked', el.checked);
+    if (el.checked) {
+      buttonChecked = true;
+    }
+  });
+
+  if(buttonChecked !== true) {
+    e.preventDefault();
+
+    $(".error-summary").removeClass("no-display");
+    $(".error-message").removeClass("no-display");
+    $("#opening-days-form-group-1").addClass('form-group-error');
+    $("#opening-days-form-group-2").addClass('form-group-error');
+  }
+});
+
+$('#irregular-hours').change(function(e) {
+  // remove all ticks from the checkboxes
+  var checkBoxes = $('[type="checkbox"]');
+  $.each(checkBoxes, function (i, el) {
+    el.checked = false;
+  });
+
+  // display the additional text box
+  $('#irregular-description-container').removeClass("no-display");
+});
+
+$('[type="checkbox"]').change(function(e) {
+  // remove all ticks from the radio buttons
+  var radioButtons = $('[type="radio"]');
+  $.each(radioButtons, function (i, el) {
+    el.checked = false;
+  });
+
+  // hide the additional text box
+  $('#irregular-description-container').addClass("no-display");
+});
+
+$('.custom-timepicker input').keyup(function(e) {
+  var stringLength = e.target.value.length;
+  if(stringLength === 2) {
+    $(this).nextAll('input').first().focus();
+  }
+  else if(stringLength > 2) {
+    e.target.value = e.target.value.slice(0, 2);
+    $(this).nextAll('input').first().focus();
+  }
+});
+
+$('#opening-hours-router-form').submit(function(e) {
+
+  var radioButtons = $('[type="radio"]');
+
+  var buttonChecked;
+
+  $.each(radioButtons, function (i, el) {
+    console.log('el.checked', el.checked);
+    if (el.checked) {
+      buttonChecked = true;
+    }
+  });
+
+  if(buttonChecked !== true) {
+    e.preventDefault();
+
+    $(".error-summary").removeClass("no-display");
+    $(".error-message").removeClass("no-display");
+    $("#opening-hours-router-form-group").addClass('form-group-error');
+  }
+});
+
+$('#opening-hours-same-time-form').submit(function(e) {
+  if(checkIfTimeFormat().inputEmpty === true || checkIfTimeFormat().notTimeFormat === true) {
+    e.preventDefault();
+
+    $(".error-summary").removeClass("no-display");
+    $(".error-message").removeClass("no-display");
+    $("#opening-hours-same-time-form-group").addClass('form-group-error');
+  }
+});
+
+$('#opening-hours-individual-form').submit(function(e) {
+  if(checkIfTimeFormat().inputEmpty === true || checkIfTimeFormat().notTimeFormat === true) {
+    e.preventDefault();
+
+    $(".error-summary").removeClass("no-display");
+    $(".error-message").removeClass("no-display");
+    $("#opening-hours-individual-form-group").addClass('form-group-error');
+  }
+});
+
+function checkIfTimeFormat() {
+  var inputFields = $('.custom-timepicker input');
+  var hourInputs = $('.hourInput');
+  var minuteInputs = $('.minuteInput');
+
+  var inputEmpty = false;
+  var notTimeFormat = false;
+
+  $.each(inputFields, function (i, el) {
+    if (el.value === '') {
+      inputEmpty = true;
+    }
+  });
+
+  $.each(hourInputs, function (i, el) {
+    if (Number(el.value) >= 24 || isNaN(el.value)) {
+      notTimeFormat = true;
+    }
+  });
+
+  $.each(minuteInputs, function (i, el) {
+    if (Number(el.value) >= 60 || isNaN(el.value)) {
+      notTimeFormat = true;
+    }
+  });
+  return {inputEmpty, notTimeFormat};
+}
+
 $('#add-button').click(function(e) {
   e.preventDefault();
 });

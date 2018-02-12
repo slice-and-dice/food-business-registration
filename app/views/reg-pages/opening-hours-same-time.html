@@ -1,0 +1,70 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+		<div>
+			<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+		</div>
+	
+		<div class="grid-row">
+			<div class="column-two-thirds">
+				<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+					<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+						You have not selected one of the options below
+					</h2>
+					<ul class="error-summary-list">
+						<li>
+							<a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+						</li>
+					</ul>
+				</div>
+				
+				<form id="opening-hours-same-time-form" method="get" class="form" action="/reg-pages/business-importexport">
+					<div id="opening-hours-same-time-form-group" class="form-group">
+						<fieldset>
+							<legend>
+									<h2 class="heading-large">Opening hours</h2>
+								<h4 class="heading-small">What times will this establishment be open?</h4>
+							</legend>
+							<legend>
+								<span>Open on:</span>
+								<ul>
+									{% for day in data['openingDays'] %}
+										{% if day !== "_unchecked" %}
+											<li>{{ day }}</li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+								<br>
+								<span class="form-hint">For example 10:00 to 19:00</span>
+								<br>
+							</legend>
+
+							<div class="opening-hours-inputs">
+									<label class="form-label" for="opensTime">Opens at</label>
+									<div class="form-control custom-timepicker" id="opensTime">
+										<input class="hourInput" id="opensHour" name="openingHoursAll" type="text">
+										<span>:</span>
+										<input class="minuteInput" id="opensMinute" name="openingHoursAll" type="text">
+									</div>
+								</div>
+								<div class="closing-hours-inputs">
+									<label class="form-label" for="closesTime">Closes at</label>
+									<div class="form-control custom-timepicker" id="closesTime">
+											<input class="hourInput" id="closesHour" name="closingHoursAll" type="text">
+											<span>:</span>
+											<input class="minuteInput" id="closesMinute" name="closingHoursAll" type="text">
+										</div>
+								</div>
+
+						</fieldset>
+					</div>
+	
+					<div class="grid-row">
+						<input type="submit" class="button" value="Save and continue">
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}
