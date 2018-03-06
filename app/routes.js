@@ -1,7 +1,9 @@
 // import { read } from 'fs';
 
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const request = require('request');
+
 
 // Route index page
 router.get('/', function (req, res) {
@@ -181,6 +183,35 @@ router.get('/summary-declaration-redirect', function (req, res) {
   }
 
   res.redirect('/reg-pages/summary-declaration');
+});
+
+router.get('/confirmation-redirect', function (req, res) {
+  let riskEnginePostObject = { "answerIds": [] };
+  console.log(riskEnginePostObject);
+  Object.keys(req.session.data).forEach((sessionEntry) => {
+    if(sessionEntry.indexOf('risk-') > -1) {
+      let newRiskIDs = req.session.data[sessionEntry];
+      riskEnginePostObject.answerIds.push(...newRiskIDs);
+    }
+  });
+
+  console.log(riskEnginePostObject);
+
+  let riskEnginePostConfig = {
+    url:'https://risk-engine.cloudapps.digital/calculate',
+    json: true,
+    body: riskEnginePostObject
+  }
+
+  request.post(
+    riskEnginePostConfig,
+    (err, httpResponse, body) => {
+      if (err) { return console.error('upload failed:', err); }
+      console.log('Risk engine responded: ', body);
+    }
+  );
+
+  res.redirect('/reg-pages/confirmation');
 });
 
 // Branching
