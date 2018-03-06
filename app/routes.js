@@ -187,7 +187,6 @@ router.get('/summary-declaration-redirect', function (req, res) {
 
 router.get('/confirmation-redirect', function (req, res) {
   let riskEnginePostObject = { "answerIds": [] };
-  console.log(riskEnginePostObject);
   Object.keys(req.session.data).forEach((sessionEntry) => {
     if(sessionEntry.indexOf('risk-') > -1) {
       let newRiskIDs = req.session.data[sessionEntry];
