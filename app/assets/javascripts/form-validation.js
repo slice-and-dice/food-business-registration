@@ -389,7 +389,10 @@ function checkIfTimeFormat() {
       notTimeFormat = true;
     }
   });
-  return {inputEmpty, notTimeFormat};
+  return {
+    inputEmpty: inputEmpty,
+    notTimeFormat: notTimeFormat
+  };
 }
 
 $('#add-button').click(function(e) {
