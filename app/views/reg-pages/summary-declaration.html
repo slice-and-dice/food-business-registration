@@ -109,7 +109,7 @@
             <td class="bold">
               {% if data['openingDaysIrregular'] === "Irregular opening hours" %}
                 <p>Irregular opening hours:</p>
-                <p>{{ data['openingDaysIrregularDescription'] }}</p> 
+                <p>{{ data['openingDaysIrregularDescription'] }}</p>
               {% else %}
               <ul>
                 {% for day in data['openingDays'] %}
@@ -195,7 +195,7 @@
 
       <!-- <div class="form-group"> -->
 
-      <form id="#fsa-checkbox-form" action="/reg-pages/confirmation">
+      <form id="#fsa-checkbox-form" method="POST" action="/reg-pages/confirmation">
         <div class="form-group">
           <legend>
             <h2 class="heading-medium">
@@ -213,7 +213,7 @@
             <span class="error-message no-display">You have not ticked the box below</span>
           </legend>
           <div class="multiple-choice">
-            <input id="radio-1" type="checkbox" name="radio-group" value="Northern Ireland">
+            <input id="radio-1" type="checkbox">
             <label for="radio-1">I agree </label>
           </div>
         </div>
