@@ -12,7 +12,6 @@ Example registration form output in JSON format, to be sent to the registration 
     "id": "MAV",
     "name": "Malvern Hills District Council"
   },
-  "answerIds": ["TYPE-001", "TYPE-003", "001", "004", "006"],
-  "registrationSource": "FSA Online Registration Form"
+  "answerIds": ["TYPE-001", "TYPE-003", "001", "004", "006"]
 }
 ```
