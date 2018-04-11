@@ -1,9 +1,12 @@
+// import { constants } from 'zlib';
+
 // import { read } from 'fs';
 
 const express = require('express')
 const router = express.Router()
 const fetch = require('node-fetch')
 const Promise = require('bluebird')
+const request = require('request');
 
 // Route index page
 router.get('/', function (req, res) {
@@ -216,7 +219,7 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
     pipelineConfig: pipelineConfig
   }));
 
-  const url = process.env.REGISTRATION_SUBMISSION_URL ;
+  const url = process.env.REGISTRATION_SUBMISSION_URL;
 
   if (url) {
 
@@ -238,6 +241,9 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
 
         next();
       })
+      .catch(function(err) {
+        return console.error('Failed to submit registration:', err);
+      });
 
   } else {
     next();
@@ -256,6 +262,31 @@ processData = function (data) {
 
   return object;
 }
+// router.get('/confirmation-redirect', function (req, res) {
+//   let riskEnginePostObject = { "answerIds": [] };
+//   Object.keys(req.session.data).forEach((sessionEntry) => {
+//     if(sessionEntry.indexOf('risk-') > -1) {
+//       let newRiskIDs = req.session.data[sessionEntry];
+//       riskEnginePostObject.answerIds.push(...newRiskIDs);
+//     }
+//   });
+
+//   let riskEnginePostConfig = {
+//     url:'https://risk-engine.cloudapps.digital/calculate',
+//     json: true,
+//     body: riskEnginePostObject
+//   }
+
+//   request.post(
+//     riskEnginePostConfig,
+//     (err, httpResponse, body) => {
+//       if (err) { return console.error('upload failed:', err); }
+//       console.log('Risk engine responded: ', body);
+//     }
+//   );
+
+//   res.redirect('/reg-pages/confirmation');
+// });
 
 // Branching
 // router.get('/establishment-details-redirect', function (req, res) {
