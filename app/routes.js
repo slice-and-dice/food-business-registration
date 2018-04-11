@@ -1,9 +1,12 @@
+// import { constants } from 'zlib';
+
 // import { read } from 'fs';
 
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const fetch = require('node-fetch')
+const Promise = require('bluebird')
 const request = require('request');
-
 
 // Route index page
 router.get('/', function (req, res) {
@@ -15,7 +18,7 @@ router.get('/start-submit-redirect', function (req, res) {
   // var detail = req.query.businessDetail;
   var detail = req.query.startUserRegisteringBusiness;
 
-  switch(detail) {
+  switch (detail) {
     case 'New food business':
       res.redirect('/reg-pages/registration-type')
       break;
@@ -34,7 +37,7 @@ router.get('/start-submit-redirect', function (req, res) {
 router.get('/opening-hours-redirect', function (req, res) {
   var detail = req.query.openCloseSameTimes;
 
-  switch(detail) {
+  switch (detail) {
     case 'Yes':
       res.redirect('/reg-pages/opening-hours-same-time')
       break;
@@ -50,7 +53,7 @@ router.get('/opening-hours-redirect', function (req, res) {
 router.get('/opening-days-redirect', function (req, res) {
   var detail = req.query.openingDaysIrregular;
 
-  switch(detail) {
+  switch (detail) {
     case 'Irregular opening hours':
       res.redirect('/reg-pages/business-importexport')
       break;
@@ -63,7 +66,7 @@ router.get('/opening-days-redirect', function (req, res) {
 router.get('/registration-type-redirect', function (req, res) {
   var detail = req.query.registrationTypeOperatorDetail;
 
-  switch(detail) {
+  switch (detail) {
     case 'I operate this food business':
       res.redirect('/reg-pages/soletrader-name')
       break;
@@ -82,7 +85,7 @@ router.get('/registration-type-redirect', function (req, res) {
 router.get('/operator-type-redirect', function (req, res) {
   var detail = req.query.operatorBusinessDetail;
 
-  switch(detail) {
+  switch (detail) {
     case 'personOperatesBusiness':
       res.redirect('/reg-pages/soletrader-name')
       break;
@@ -101,7 +104,7 @@ router.get('/operator-type-redirect', function (req, res) {
 router.get('/opening-date-redirect', function (req, res) {
   var detail = req.query.openingStatus;
 
-  switch(detail) {
+  switch (detail) {
     case 'alreadyTrading':
       res.redirect('/reg-pages/opening-date-past')
       break;
@@ -116,7 +119,7 @@ router.get('/opening-date-redirect', function (req, res) {
 router.get('/business-customers-redirect', function (req, res) {
   var detail = req.query.businessCustomersSupply;
 
-  switch(detail) {
+  switch (detail) {
     case 'Other businesses':
       res.redirect('/reg-pages/business-b2b')
       break;
@@ -185,33 +188,105 @@ router.get('/summary-declaration-redirect', function (req, res) {
   res.redirect('/reg-pages/summary-declaration');
 });
 
-router.get('/confirmation-redirect', function (req, res) {
-  let riskEnginePostObject = { "answerIds": [] };
-  Object.keys(req.session.data).forEach((sessionEntry) => {
-    if(sessionEntry.indexOf('risk-') > -1) {
-      let newRiskIDs = req.session.data[sessionEntry];
-      riskEnginePostObject.answerIds.push(...newRiskIDs);
+router.post('/reg-pages/confirmation', function (req, res, next) {
+
+  const localAuthorityConfig = {
+    "id": "MAV",
+    "name": "Malvern Hills District Council"
+  }
+
+  const pipelineConfig = {
+    "modules": [{
+        "url": "https://id-generator.cloudapps.digital/generate",
+        "method": "GET"
+      },
+      {
+        "url": "https://risk-engine.cloudapps.digital/calculate",
+        "method": "POST"
+      },
+      {
+        "url": "https://registration-router.cloudapps.digital/newregistration",
+        "method": "POST"
+      }
+    ]
+  }
+
+  const data = processData(req.session.data);
+
+  const requestData = JSON.stringify(Object.assign({
+    registrationData: data,
+    localAuthority: localAuthorityConfig,
+    pipelineConfig: pipelineConfig
+  }));
+
+  const url = process.env.REGISTRATION_SUBMISSION_URL;
+
+  if (url) {
+
+    const options = {
+      method: "POST",
+      body: requestData,
+      headers: {
+        "content-type": "application/json"
+      }
+    }
+
+    fetch(url, options)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (json) {
+        req.session.data.registrationId = json.registrationId;
+        req.session.data.registrationLocalAuthority = localAuthorityConfig.name;
+
+        next();
+      })
+      .catch(function(err) {
+        return console.error('Failed to submit registration:', err);
+      });
+
+  } else {
+    next();
+  }
+
+});
+
+processData = function (data) {
+  var object = {};
+
+  Object.keys(data).forEach(function (key) {
+    if (data[key]) {
+      object[key] = data[key];
     }
   });
 
-  console.log(riskEnginePostObject);
+  return object;
+}
+// router.get('/confirmation-redirect', function (req, res) {
+//   let riskEnginePostObject = { "answerIds": [] };
+//   Object.keys(req.session.data).forEach((sessionEntry) => {
+//     if(sessionEntry.indexOf('risk-') > -1) {
+//       let newRiskIDs = req.session.data[sessionEntry];
+//       riskEnginePostObject.answerIds.push(...newRiskIDs);
+//     }
+//   });
 
-  let riskEnginePostConfig = {
-    url:'https://risk-engine.cloudapps.digital/calculate',
-    json: true,
-    body: riskEnginePostObject
-  }
+//   let riskEnginePostConfig = {
+//     url:'https://risk-engine.cloudapps.digital/calculate',
+//     json: true,
+//     body: riskEnginePostObject
+//   }
 
-  request.post(
-    riskEnginePostConfig,
-    (err, httpResponse, body) => {
-      if (err) { return console.error('upload failed:', err); }
-      console.log('Risk engine responded: ', body);
-    }
-  );
+//   request.post(
+//     riskEnginePostConfig,
+//     (err, httpResponse, body) => {
+//       if (err) { return console.error('upload failed:', err); }
+//       console.log('Risk engine responded: ', body);
+//     }
+//   );
 
-  res.redirect('/reg-pages/confirmation');
-});
+//   res.redirect('/reg-pages/confirmation');
+// });
 
 // Branching
 // router.get('/establishment-details-redirect', function (req, res) {
