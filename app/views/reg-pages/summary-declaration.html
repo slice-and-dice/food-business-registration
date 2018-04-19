@@ -24,17 +24,17 @@
 
           <tr>
             <td>Registration type</td>
-            <td class="bold">{{ data['startUserRegisteringBusiness'] }}</td>
+            <td class="bold">{{ data['registration_type'] }}</td>
           </tr>
 
           <tr>
             <td>Name</td>
-            <td class="bold">{{ data['soletraderNameFirstName'] }} {{ data['soletraderNameSurname'] }}</td>
+            <td class="bold">{{ data['operator_first_name'] }} {{ data['operator_last_name'] }}</td>
           </tr>
 
           <tr>
             <td>Operator type</td>
-            <td class="bold">{{ data['registrationTypeOperatorDetail'] }}</td>
+            <td class="bold">{{ data['registration_role'] }}</td>
           </tr>
 
           <tr>
@@ -43,14 +43,14 @@
               <!-- <div>Hill Cottage</div> -->
               <div>Petty France</div>
               <div>London</div>
-              <div>{{ data['operatorAddressPostcode'] }}</div>
+              <div>{{ data['operator_postcode'] }}</div>
             </td>
           </tr>
 
           <tr>
             <td>Contact number</td>
             <td class="bold">
-              <div>{{ data['operatorContactTelephone'] }}</div>
+              <div>{{ data['operator_contact_type'] }}</div>
               <div>
                 <label class="form-hint-small">Mobile</label>
               </div>
@@ -59,7 +59,7 @@
 
           <tr>
             <td>Email address</td>
-            <td class="bold">{{ data['operatorContactEmail'] }}</td>
+            <td class="bold">{{ data['operator_email'] }}</td>
           </tr>
 
 
@@ -73,7 +73,7 @@
 
           <tr>
             <td>Establishment name</td>
-            <td class="bold">{{ data['establishmentNameFoodBusinessName'] }}</td>
+            <td class="bold">{{ data['establishment_name'] }}</td>
           </tr>
 
           <tr>
@@ -81,28 +81,34 @@
             <td class="bold">
                 <div>{{ data['establishmentAddressLine1'] }}</div>
                 <div>{{ data['establishmentAddressLine2'] }}</div>
-                <div>{{ data['establishmentAddressPostcode'] }}</div>
+                <div>{{ data['establishment_postcode'] }}</div>
                 <div>{{ data['establishmentAddressDoNotKnow'] }}</div>
             </td>
           </tr>
           <tr>
             <td>Domestic premises</td>
-            <td class="bold">{{ data['establishmentAddressDetailsDomestic'] }}</td>
+            <td class="bold">
+              {% if  data['domestic_premise'] === "true" %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </td>
           </tr>
           <tr>
             <td>Establishment email address</td>
             <!-- <td class="bold">hello@waterfrontsandwiches.co.uk</td> -->
-            <td class="bold">{{ data['establishmentContactEmail'] }}</td>
+            <td class="bold">{{ data['establishment_email'] }}</td>
             <!-- TODO - Add in logic for is this same as operator contact details?? -->
           </tr>
           <tr>
             <td>Establishment phone number</td>
-            <td class="bold">{{ data['establishmentContactTelephone'] }}</td>
+            <td class="bold">{{ data['establishment_contact_number'] }}</td>
           </tr>
           <tr>
             <!-- <td>Opened on</td> -->
             <td>{{ data['openingDateLabel'] }}</td>
-            <td class="bold">{{ data['openingDateDay'] }} {{ data['openingDateMonth'] }} {{ data['openingDateYear'] }}</td>
+            <td class="bold">{{ data['trading_date'] }}</td>
           </tr>
           <tr>
             <td>Opening days and hours</td>
@@ -115,10 +121,10 @@
                 {% for day in data['openingDays'] %}
                   {% if day !== "_unchecked" %}
                     <li>{{ day }}:
-                      {% if  data['openCloseSameTimes'] === "Yes" %}
-                        {{ data['openingHoursAll'] }} - {{ data['closingHoursAll'] }}
+                      {% if data['openCloseSameTimes'] === "true" %}
+                        {{ data['opening_hours'] }} - {{ data['closing_hours'] }}
                       {% else %}
-                        {{ data['openingHours' + day ] }} - {{ data['closingHours' + day ] }}
+                        {{ data['opening_hours_' + day.toLowerCase() ] }} - {{ data['closing_hours_' + day.toLowerCase() ] }}
                       {% endif %}
                     </li>
                   {% endif %}
@@ -139,27 +145,27 @@
               <td>Customer type</td>
               <td>
                 <!-- Have a look at routes.js -->
-                <div>{{ data['businessCustomersSupplyLabel'] }}</div>
-                <div class="bold">{{ data['businessCustomersSupply'] }}</div>
+                <div>{{ data['supplies_toLabel'] }}</div>
+                <div class="bold">{{ data['supplies_to'] }}</div>
               </td>
             </tr>
 
             <tr>
               <td>Importing and Exporting</td>
               <td class="bold">
-                <div> {{data['businessImportExportActivities'] }} </div>
+                <div> {{data['import_export'] }} </div>
               </td>
             </tr>
 
             <tr>
               <td>Business type</td>
-              <td class="bold">{{ data['businessConsumerFacingOption'] }}</td>
+              <td class="bold">{{ data['business_type'] }}</td>
             </tr>
 
             <tr>
               <td>Food activities</td>
               <td class="bold">
-                <div>{{ data['businessFoodAndHandlingOption'] }}</div>
+                <div>{{ data['food_activities'] }}</div>
               </td>
             </tr>
 
@@ -167,7 +173,7 @@
             <tr>
               <td>Additional information</td>
               <td class="bold">
-                <div>{{ data['businessOtherDetailAdditional'] }}</div>
+                <div>{{ data['registration_free_text'] }}</div>
               </td>
             </tr>
 
