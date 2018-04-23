@@ -23,10 +23,6 @@
           You have not selected one of the options below
         </h2>
 
-        <!-- <p>
-                Optional description of the errors and how to correct them
-              </p> -->
-
         <ul class="error-summary-list">
           <li>
             <a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
@@ -35,7 +31,7 @@
 
       </div>
 
-      <form method="post" action="/reg-pages/confirmation">
+      <form id="fsa-radio-button-form" method="post" action="/reg-pages/confirmation">
         <div class="form-group">
 
           <div class="multiple-choice">
@@ -45,7 +41,7 @@
           </div>
           <div class="multiple-choice">
             <input id="radio-2" type="checkbox" name="declaration_1" value="true">
-            <label for="radio-2">I will notify food authorities of any significant changes to the business activity, including closure, within
+            <label for="radio-2">I, or the operator, will notify food authorities of any significant changes to the business activity, including closure, within
               28 days of the change happening.
               <span class "form-hint">
             </label>

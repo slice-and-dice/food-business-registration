@@ -105,13 +105,13 @@ router.get('/operator-contact-redirect', function (req, res) {
   var detail = req.query.operator_type;
 
   switch (detail) {
-    case 'personOperatesBusiness':
+    case 'I operate this food business':
       res.redirect('/reg-pages/operator-contact')
       break;
-    case 'companyOperatesBusiness':
+    case 'I operate this business in a partnership':
       res.redirect('/reg-pages/operator-contact')
       break;
-    case 'charityOperatesBusiness':
+    case 'I represent a person, charity or company which operates this business':
       res.redirect('/reg-pages/representative-contact')
       break;
     default:
@@ -279,7 +279,7 @@ router.get('/summary-declaration-redirect', function (req, res) {
   }
 
   if (req.session.data['reuseOperatorContactDetails']) {
-    req.session.data.establishment_contact_number = req.session.data.operator_contact_number;
+    req.session.data.establishment_contact_number = req.session.data.operator_contact_type;
     req.session.data.establishment_email = req.session.data.operator_email;
   }
 

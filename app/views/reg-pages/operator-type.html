@@ -2,12 +2,10 @@
 
 <main id="content" role="main">
 	<div>
-		<a class="back-link" href="/index.html">
-			<a class="back-link" href="#" onclick="window.history.back()">Back</a>
-		</a>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
 	</div>
 	<div class="grid-row">
-		<div class="column-two-thirds">
+		<div>
 			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
 				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
@@ -47,20 +45,24 @@
 
 						<div class="multiple-choice">
 							<input id="radio-1" type="radio" name="operator_type" value="personOperatesBusiness">
-							<label for="radio-1">A person</label>
-							<span class="form-hint">The food business is owned or operated by an individual person, rather than any legal entity such as a business or
-								charity.
-							</span>
+							<label for="radio-1">A person
+								<span class="form-hint">The food business is owned or operated by an individual person, rather than any legal entity such as a business or
+									charity.
+								</span>
+							</label>
+
 						</div>
 						<div class="multiple-choice">
 							<input id="radio-2" type="radio" name="operator_type" value="companyOperatesBusiness">
-							<label for="radio-2">A company</label>
-							<span class="form-hint">The food business is owned or operated by a limited company rather than a single person or partnership of people.</span>
+							<label for="radio-2">A company
+								<span class="form-hint">The food business is owned or operated by a limited company rather than a single person or partnership of people.</span>
+							</label>
 						</div>
 						<div class="multiple-choice">
 							<input id="radio-3" type="radio" name="operator_type" value="charityOperatesBusiness">
-							<label for="radio-3">A charity</label>
-							<span class="form-hint">The food business is owned or operated by a charity rather than a company, person or partnership of people.</span>
+							<label for="radio-3">A charity
+								<span class="form-hint">The food business is owned or operated by a charity rather than a company, person or partnership of people.</span>
+							</label>
 						</div>
 
 					</fieldset>
