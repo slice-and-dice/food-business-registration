@@ -1,0 +1,68 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+	<div class="grid-row">
+		<!-- <div class="column-two-thirds"> -->
+		<div>
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+        </h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+					</li>
+				</ul>
+
+			</div>
+			<h1 class="heading-large">Operator experience</h1>
+			<form id="fsa-radio-button-form-final-page" method="get" class="form" action="/reg-pages/establishment-name">
+
+				<div class="form-group">
+					<fieldset>
+
+						<legend>
+							<h1 class="heading-medium">Does the operator have previous experience in the food industry?</h1>
+							<span class="error-message no-display">You have not selected one of the options below</span>
+						</legend>
+
+						<div class="multiple-choice">
+							<input id="radio-1" type="radio" name="food_business_previous_experience" value="As a food business operator">
+							<label for="radio-1">As a food business operator
+								<span class="form-hint">For example an owner or manager</span>
+							</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-2" type="radio" name="food_business_previous_experience" value="As a food handler involved in food preparation">
+							<label for="radio-2">As a food handler involved in food preparation
+								<span class="form-hint">For example chef, kitchen assistant, etc</span>
+							</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-3" type="radio" name="food_business_previous_experience" value="As a non food handling member of staff">
+							<label for="radio-3">As a non food handling member of staff
+								<span class="form-hint">For example wait staff, front of house, delivery driver etc</span>
+							</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-4" type="radio" name="food_business_previous_experience" value="No previous experience in the food industry">
+							<label for="radio-4">No previous experience in the food industry</label>
+						</div>
+
+					</fieldset>
+				</div>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Save and continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}
