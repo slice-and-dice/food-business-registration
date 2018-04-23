@@ -147,14 +147,28 @@
               <td>
                 <!-- Have a look at routes.js -->
                 <div>{{ data['supplies_toLabel'] }}</div>
-                <div class="bold">{{ data['supplies_to'] }}</div>
+                <ul>
+                    {% for type in data['supplies_to'] %}
+                    <li class="bold">
+                        {{ type }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!-- <div class="bold">{{ data['supplies_to'] }}</div> -->
               </td>
             </tr>
 
             <tr>
               <td>Importing and Exporting</td>
               <td class="bold">
-                <div> {{data['import_export'] }} </div>
+                <!-- <div> {{data['import_export'] }} </div> -->
+                <ul>
+                    {% for type in data['import_export'] %}
+                    <li>
+                        {{ type }}
+                    </li>
+                    {% endfor %}
+                </ul>
               </td>
             </tr>
 
@@ -166,7 +180,14 @@
             <tr>
               <td>Food activities</td>
               <td class="bold">
-                <div>{{ data['food_activities'] }}</div>
+                <!-- <div>{{ data['food_activities'] }}</div> -->
+                <ul>
+                    {% for type in data['food_activities'] %}
+                    <li>
+                        {{ type }}
+                    </li>
+                    {% endfor %}
+                </ul>
               </td>
             </tr>
 
