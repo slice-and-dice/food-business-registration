@@ -34,6 +34,7 @@
     "gulp-util": "^3.0.7",
     "marked": "^0.3.6",
     "minimist": "1.2.0",
+    "moment": "^2.22.1",
     "node-fetch": "^2.1.2",
     "notifications-node-client": "^3.0.0",
     "nunjucks": "^2.5.2",

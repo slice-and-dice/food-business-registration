@@ -1,0 +1,95 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+  <div>
+    <a class="back-link" href="#" onclick="window.history.back()">Back</a>
+  </div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+        <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+          You have not selected one of the options below
+        </h2>
+
+        <ul class="error-summary-list">
+          <li>
+            <a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+          </li>
+        </ul>
+      </div>
+
+      <h1 class="heading-large">Business activities</h1>
+
+      <form id="fsa-checkbox-form" method="get" class="form" action="/reg-pages/business-foodandhandling">
+        <div class="form-group">
+          <fieldset>
+            <legend>
+              <h3 class="heading-medium">Which of the following activities will this establishment do?</h3>
+              <span class="error-message no-display">You must select at least one option below</span>
+            </legend>
+
+            <div class="multiple-choice">
+              <input id="radio-1" type="checkbox" name="business_typequestions" value="Sell or serve food direct to the end consumer">
+              <label for="radio-1">Sell or serve food direct to the end consumer</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-2" type="checkbox" name="business_typequestions" value="Only prepare or serve drinks, and no food">
+              <label for="radio-2">Only prepare or serve drinks, and no food</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-3" type="checkbox" name="business_typequestions" value="Make, prepare or process food">
+              <label for="radio-3">Make, prepare or process food</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-4" type="checkbox" name="business_typequestions" value="Serve or sell food direct to the end consumer">
+              <label for="radio-4">Serve or sell food direct to the end consumer</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-5" type="checkbox" name="business_typequestions" value="Serve or sell food to be eaten immediately">
+              <label for="radio-5">Serve or sell food to be eaten immediately</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-6" type="checkbox" name="business_typequestions" value="Provide seating for customers">
+              <label for="radio-6">Provide seating for customers</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-7" type="checkbox" name="business_typequestions" value="Most customers will eat the food in this establishment">
+              <label for="radio-7">Most customers will eat the food in this establishment</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-8" type="checkbox" name="business_typequestions" value="Prepare food in a mobile establishment">
+              <label for="radio-8">Prepare food in a mobile establishment</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-9" type="checkbox" name="business_typequestions" value="Sell food for customers to prepare at home">
+              <label for="radio-9">Sell food for customers to prepare at home</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-10" type="checkbox" name="business_typequestions" value="Prepare food sold or served at this establishment in a home">
+              <label for="radio-10">Prepare food sold or served at this establishment in a home</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-11" type="checkbox" name="business_typequestions" value="Provide a food delivery service">
+              <label for="radio-11">Provide a food delivery service</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-12" type="checkbox" name="business_typequestions" value="Process food products that come from animals, such as meat, fish, dairy and shellfish.">
+              <label for="radio-12">Process food products that come from animals, such as meat, fish, dairy and shellfish.</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-13" type="checkbox" name="business_typequestions" value="Store products that come from animals such as meat, fish, shellfish or dairy in an industrial cold store">
+              <label for="radio-13">Store products that come from animals such as meat, fish, shellfish or dairy in an industrial cold store</label>
+            </div>
+
+          </fieldset>
+        </div>
+        <div class="grid-row">
+          <input type="submit" class="button" value="Save and continue">
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

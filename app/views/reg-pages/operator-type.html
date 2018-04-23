@@ -2,7 +2,9 @@
 
 <main id="content" role="main">
 	<div>
-		<a class="back-link" href="/index.html"><a class="back-link" href="#" onclick="window.history.back()">Back</a></a>
+		<a class="back-link" href="/index.html">
+			<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+		</a>
 	</div>
 	<div class="grid-row">
 		<div class="column-two-thirds">
@@ -24,6 +26,19 @@
 
 			<form method="get" class="form" id="fsa-radio-button-form" action="/operator-type-redirect">
 				<div class="form-group">
+					<details>
+						<summary>
+							<span class="summary">What is a food business operator</span>
+						</summary>
+						<div class="panel panel-border-narrow">
+							<p class="label"> The food business operator is the person, charity or company who makes the decisions about the food business, what
+								it serves and how it operates.
+								<p>
+						</div>
+					</details>
+				</div>
+
+				<div class="form-group">
 					<fieldset>
 
 						<legend>
@@ -31,31 +46,24 @@
 						</legend>
 
 						<div class="multiple-choice">
-							<input id="radio-1" type="radio" name="operatorBusinessDetail" value="personOperatesBusiness">
+							<input id="radio-1" type="radio" name="operator_type" value="personOperatesBusiness">
 							<label for="radio-1">A person</label>
+							<span class="form-hint">The food business is owned or operated by an individual person, rather than any legal entity such as a business or
+								charity.
+							</span>
 						</div>
 						<div class="multiple-choice">
-							<input id="radio-2" type="radio" name="operatorBusinessDetail" value="companyOperatesBusiness">
+							<input id="radio-2" type="radio" name="operator_type" value="companyOperatesBusiness">
 							<label for="radio-2">A company</label>
+							<span class="form-hint">The food business is owned or operated by a limited company rather than a single person or partnership of people.</span>
 						</div>
 						<div class="multiple-choice">
-							<input id="radio-3" type="radio" name="operatorBusinessDetail" value="charityOperatesBusiness">
+							<input id="radio-3" type="radio" name="operator_type" value="charityOperatesBusiness">
 							<label for="radio-3">A charity</label>
+							<span class="form-hint">The food business is owned or operated by a charity rather than a company, person or partnership of people.</span>
 						</div>
 
 					</fieldset>
-				</div>
-				<div class="form-group">
-					<details>
-						<summary>
-							<span class="summary">Questions about types of operators</span>
-						</summary>
-						<div class="panel panel-border-narrow">
-							<p class="label"> Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate
-								strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world
-								view of disruptive innovation via workplace diversity and empowerment. </p>
-						</div>
-					</details>
 				</div>
 				<div class="grid-row">
 					<input type="submit" class="button" value="Save and continue">
