@@ -21,9 +21,18 @@
 				</ul>
 			</div>
 
-			<h1 class="heading-large">Charity details</h1>
+			<h1 class="heading-large">Details of the operating charity</h1>
 
 			<form method="get" class="form" action="/reg-pages/operator-contact">
+				<div class="form-group">
+						<details>
+							<summary><span class="summary">What is a food business operator</span></summary>
+							<div class="panel panel-border-narrow">
+								<p class="label"> A food business operator is the person, charity or company who makes the decisions about the food business, what it serves and how it operates.
+									<p>
+							</div>
+						</details>
+					</div>
 				<div class="form-group">
 					<fieldset>
 						<div class="form-group">
@@ -32,27 +41,10 @@
 						</div>
 
 						<div class="form-group">
-							<label class="form-label" for="operator_charity_number">Charity number</label>
+							<label class="form-label" for="operator_charity_number">Charity reference number</label>
 							<input class="form-control" id="fbo-company-name" type="text" name="operator_charity_number">
 						</div>
 					</fieldset>
-					<details>
-						<summary>
-							<span class="summary">Questions about charity numbers</span>
-						</summary>
-						<div class="panel panel-border-narrow">
-							<p class="label"> By law, if you set up a charity you must have applied to register it with the commission if it is a charitable incorporated
-								organisation (CIO) or its annual income is more than £5,000, unless it is a specific type of charity that doesn’t
-								have to register. The commission will take action to secure compliance if it identifies a charity which isn’t registered
-								but should be.
-							</p>
-
-							<p>If your charity isn’t a CIO and your income is under £5,000 you don’t have to register with the commission. You can
-								find your charity reference number by visiting the
-								<a href="http://beta.charitycommission.gov.uk/" target="_blank">Charity register.</a>
-							</p>
-						</div>
-					</details>
 				</div>
 				<div class="grid-row">
 					<input type="submit" class="button" value="Save and continue">

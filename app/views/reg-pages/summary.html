@@ -1,0 +1,193 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+  <div>
+    <a class="back-link" href="#" onclick="window.history.back()">Back</a>
+  </div>
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h2 class="heading-medium">
+        Please check that the details you entered are correct.
+      </h2>
+
+      <!--Name Details table-->
+      <!--Operator details-->
+      <table>
+        <tbody>
+          <tr>
+            <td class="bold">Operator details</td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>Registration type</td>
+            <td class="bold">{{ data['registration_type'] }}</td>
+          </tr>
+
+          <tr>
+            <td>Name</td>
+            <td class="bold">{{ data['operator_first_name'] }} {{ data['operator_last_name'] }}</td>
+          </tr>
+
+          <tr>
+            <td>Operator type</td>
+            <td class="bold">{{ data['registration_role'] }}</td>
+          </tr>
+
+          <tr>
+            <td>Operator home address</td>
+            <td class="bold">
+              <!-- <div>Hill Cottage</div> -->
+              <div>Petty France</div>
+              <div>London</div>
+              <div>{{ data['operator_postcode'] }}</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Contact number</td>
+            <td class="bold">
+              <div>{{ data['operator_contact_type'] }}</div>
+              <div>
+                <label class="form-hint-small">Mobile</label>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Email address</td>
+            <td class="bold">{{ data['operator_email'] }}</td>
+          </tr>
+
+
+
+          <!--Establishment details-->
+
+          <tr>
+            <td class="bold">Establishment details</td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td>Establishment name</td>
+            <td class="bold">{{ data['establishment_name'] }}</td>
+          </tr>
+
+          <tr>
+            <td>Establishment address</td>
+            <td class="bold">
+                <div>{{ data['establishmentAddressLine1'] }}</div>
+                <div>{{ data['establishmentAddressLine2'] }}</div>
+                <div>{{ data['establishment_postcode'] }}</div>
+                <div>{{ data['establishmentAddressDoNotKnow'] }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Domestic premises</td>
+            <td class="bold">
+              {% if  data['domestic_premise'] === "true" %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>Establishment email address</td>
+            <!-- <td class="bold">hello@waterfrontsandwiches.co.uk</td> -->
+            <td class="bold">{{ data['establishment_email'] }}</td>
+            <!-- TODO - Add in logic for is this same as operator contact details?? -->
+          </tr>
+          <tr>
+            <td>Establishment phone number</td>
+            <td class="bold">{{ data['establishment_contact_number'] }}</td>
+          </tr>
+          <tr>
+            <!-- <td>Opened on</td> -->
+            <td>{{ data['openingDateLabel'] }}</td>
+            <td class="bold">{{ data['trading_date'] }}</td>
+          </tr>
+          <tr>
+            <td>Opening days and hours</td>
+            <td class="bold">
+              {% if data['openingDaysIrregular'] === "Irregular opening hours" %}
+                <p>Irregular opening hours:</p>
+                <p>{{ data['openingDaysIrregularDescription'] }}</p>
+              {% else %}
+              <ul>
+                {% for day in data['openingDays'] %}
+                  {% if day !== "_unchecked" %}
+                    <li>{{ day }}:
+                      {% if data['openCloseSameTimes'] === "true" %}
+                        {{ data['opening_hours'] }} - {{ data['closing_hours'] }}
+                      {% else %}
+                        {{ data['opening_hours_' + day.toLowerCase() ] }} - {{ data['closing_hours_' + day.toLowerCase() ] }}
+                      {% endif %}
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </td>
+          </tr>
+
+
+          <!--Food activities-->
+          <tr>
+              <td class="bold">Food activities</td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>Customer type</td>
+              <td>
+                <!-- Have a look at routes.js -->
+                <div>{{ data['supplies_toLabel'] }}</div>
+                <div class="bold">{{ data['supplies_to'] }}</div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Importing and Exporting</td>
+              <td class="bold">
+                <div> {{data['import_export'] }} </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Business type</td>
+              <td class="bold">{{ data['business_type'] }}</td>
+            </tr>
+
+            <tr>
+              <td>Food activities</td>
+              <td class="bold">
+                <div>{{ data['food_activities'] }}</div>
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>Additional information</td>
+              <td class="bold">
+                <div>{{ data['registration_free_text'] }}</div>
+              </td>
+            </tr>
+
+        </tbody>
+      </table>
+
+      <form id="#fsa-checkbox-form" method="get" action="/reg-pages/declaration">
+        <div class="form-group" style="margin-top: 20px;">
+          <input type="submit" class="button" value="Save and continue">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

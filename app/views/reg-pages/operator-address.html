@@ -22,21 +22,34 @@
 
 			</div>
 
-			<h1 class="heading-large">Operator address</h1>
+			<h1 class="heading-large">What is the operator's address?</h1>
 
-			<form id="operator-address-form" method="get" class="form" action="/reg-pages/operator-contact">
+			<form id="operator-address-form" method="get" class="form" action="/operator-contact-redirect">
+				<div class="form-group">
+					<details>
+						<summary>
+							<span class="summary">What is a food business operator</span>
+						</summary>
+						<div class="panel panel-border-narrow">
+							<p class="label"> A food business operator is the person, charity or company who makes the decisions about the food business, what it
+								serves and how it operates.
+								<p>
+						</div>
+					</details>
+				</div>
 				<div class="form-group">
 					<fieldset>
+
+						<div class="form-group">
+							<label class="form-label" for="first-line">First line of address</label>
+							<input class="form-control" id="first-line" type="text" name="operator_address" fsa-optional>
+						</div>
 
 						<div class="form-group">
 							<label class="form-label" for="postcode">Postcode</label>
 							<input class="form-control" id="postcode" type="text" name="operator_postcode" autofocus>
 						</div>
 
-						<div class="form-group">
-							<label class="form-label" for="first-line">House name or number (optional)</label>
-							<input class="form-control" id="first-line" type="text" name="operator_address" fsa-optional>
-						</div>
 					</fieldset>
 					<div class="grid-row">
 						<a class="button" id="find-address-button" href="#" role="button">Find address</a>

@@ -64,7 +64,7 @@ router.get('/opening-days-redirect', function (req, res) {
 
 });
 
-router.get('/registration-type-redirect', function (req, res) {
+router.get('/registration-role-redirect', function (req, res) {
   var detail = req.query.registration_role;
 
   switch (detail) {
@@ -95,6 +95,40 @@ router.get('/operator-type-redirect', function (req, res) {
       break;
     case 'charityOperatesBusiness':
       res.redirect('/reg-pages/charity-name')
+      break;
+    default:
+      res.render('index.html')
+  }
+
+});
+router.get('/operator-contact-redirect', function (req, res) {
+  var detail = req.query.operator_type;
+
+  switch (detail) {
+    case 'personOperatesBusiness':
+      res.redirect('/reg-pages/operator-contact')
+      break;
+    case 'companyOperatesBusiness':
+      res.redirect('/reg-pages/operator-contact')
+      break;
+    case 'charityOperatesBusiness':
+      res.redirect('/reg-pages/representative-contact')
+      break;
+    default:
+    res.redirect('/reg-pages/operator-contact')
+  }
+
+});
+
+router.get('/business-highrisk-redirect', function (req, res) {
+  var detail = req.query.high_risk_activities;
+
+  switch (detail) {
+    case 'true':
+      res.redirect('/reg-pages/business-restaurant-meatfish')
+      break;
+    case 'false':
+      res.redirect('/reg-pages/business-otherdetail')
       break;
     default:
       res.render('index.html')
@@ -249,7 +283,9 @@ router.get('/summary-declaration-redirect', function (req, res) {
     req.session.data.establishment_email = req.session.data.operator_email;
   }
 
-  res.redirect('/reg-pages/summary-declaration');
+  console.log('req.session.data', req.session.data);
+
+  res.redirect('/reg-pages/summary');
 });
 
 router.post('/reg-pages/confirmation', function (req, res, next) {
