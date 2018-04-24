@@ -115,7 +115,7 @@ router.get('/operator-contact-redirect', function (req, res) {
       res.redirect('/reg-pages/representative-contact')
       break;
     default:
-    res.redirect('/reg-pages/operator-contact')
+      res.redirect('/reg-pages/operator-contact')
   }
 
 });
@@ -311,31 +311,42 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
     ]
   }
 
-  const data = processData(req.session.data);
+  answerIds = [];
+
+  Object.keys(req.session.data).forEach(function (sessionEntry) {
+    if (sessionEntry.indexOf('risk-') > -1) {
+      var newRiskIDs = req.session.data[sessionEntry];
+
+      answerIds.push(newRiskIDs[0]);
+    }
+  });
+
+  var data = processData(req.session.data);
 
   //Need to do something here to format the dates correctly..
 
-  if (req.session.data['openingDays']) {
+  if (req.session.data['openingDays'] && Array.isArray(req.session.data['openingDays'])) {
     //Using semicolon as delimiter
     req.session.data.opening_days = req.session.data.openingDays.join(';');
   }
 
-  if (req.session.data['import_export']) {
+  if (req.session.data['import_export'] && Array.isArray(req.session.data['import_export'])) {
     req.session.data.import_export = req.session.data.import_export.join(';');
   }
 
-  if (req.session.data['food_activities']) {
+  if (req.session.data['food_activities'] && Array.isArray(req.session.data['food_activities'])) {
     req.session.data.food_activities = req.session.data.food_activities.join(';');
   }
 
-  if (req.session.data['supplies_to']) {
+  if (req.session.data['supplies_to'] && Array.isArray(req.session.data['supplies_to'])) {
     req.session.data.supplies_to = req.session.data.supplies_to.join(';');
   }
 
   const requestData = JSON.stringify(Object.assign({
     registrationData: data,
     localAuthority: localAuthorityConfig,
-    pipelineConfig: pipelineConfig
+    pipelineConfig: pipelineConfig,
+    answerIds: answerIds
   }));
 
   const url = process.env.REGISTRATION_SUBMISSION_URL;
@@ -343,26 +354,21 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
   if (url) {
 
     const options = {
-      method: "POST",
+      json: true,
       body: requestData,
-      headers: {
-        "content-type": "application/json"
-      }
+      uri: url,
     }
 
-    fetch(url, options)
-      .then(function (res) {
-        return res.json();
-      })
-      .then(function (json) {
-        req.session.data.registrationId = json.registrationId;
-        req.session.data.registrationLocalAuthority = localAuthorityConfig.name;
-
+    request.post(
+      options,
+      function (err, httpResponse, body) {
+        if (err) {
+          return console.error('upload failed:', err);
+        }
+        console.log('Risk engine responded: ', body);
         next();
-      })
-      .catch(function(err) {
-        return console.error('Failed to submit registration:', err);
-      });
+      }
+    );
 
   } else {
     next();
@@ -381,31 +387,6 @@ processData = function (data) {
 
   return object;
 }
-// router.get('/confirmation-redirect', function (req, res) {
-//   let riskEnginePostObject = { "answerIds": [] };
-//   Object.keys(req.session.data).forEach((sessionEntry) => {
-//     if(sessionEntry.indexOf('risk-') > -1) {
-//       let newRiskIDs = req.session.data[sessionEntry];
-//       riskEnginePostObject.answerIds.push(...newRiskIDs);
-//     }
-//   });
-
-//   let riskEnginePostConfig = {
-//     url:'https://risk-engine.cloudapps.digital/calculate',
-//     json: true,
-//     body: riskEnginePostObject
-//   }
-
-//   request.post(
-//     riskEnginePostConfig,
-//     (err, httpResponse, body) => {
-//       if (err) { return console.error('upload failed:', err); }
-//       console.log('Risk engine responded: ', body);
-//     }
-//   );
-
-//   res.redirect('/reg-pages/confirmation');
-// });
 
 // Branching
 // router.get('/establishment-details-redirect', function (req, res) {
