@@ -21,12 +21,25 @@
 				</ul>
 			</div>
 
-			<h1 class="heading-large">New food business</h1>
+			<h1 class="heading-large">New food business establishment</h1>
 
 			<form id="establishment-name-form" method="get" class="form" action="/reg-pages/establishment-address">
 				<div class="form-group">
-					<label class="form-label" for="fbo-name">What is the trading name of this establishment?</label>
-					<input class="form-control" id="fbo-name" type="text" name="establishmentNameFoodBusinessName">
+					<details>
+						<summary>
+							<span class="summary">What is an establishment?</span>
+						</summary>
+						<div class="panel panel-border-narrow">
+								<p class="label">An establishment is the location of your food business, and the food activities taking place there. If it is a mobile food business, please use the location where it is normally stored overnight.<p>
+						</div>
+					</details>
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="fbo-name">What is the trading name of this establishment?
+						<span class="form-hint">A trading name is what your customers will call your business.</span>
+					</label>
+
+					<input class="form-control" id="fbo-name" type="text" name="establishment_name">
 				</div>
 				<div class="grid-row">
 					<input type="submit" class="button" value="Save and continue">

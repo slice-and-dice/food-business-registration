@@ -21,7 +21,9 @@
 				</ul>
 			</div>
 
-			<h1 class="heading-large">Operator contact details</h1>
+      <h1 class="heading-large">Operator contact details</h1>
+
+      <p>Please give us the details of a person at this company we can speak to about food hygiene and safety.</p>
 
 			<form id="operator-contact-form" method="get" class="form" action="/reg-pages/operator-experience">
 				<div class="form-group">
@@ -35,7 +37,17 @@
 								<p>
 						</div>
 					</details>
-				</div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="representative-contact-name">Name of contact</label>
+            <input class="form-control" id="representative-contact-name" type="text" name="representative-contact-name">
+
+            <div class="big-gap"></div>
+
+            <label class="form-label" for="representative-contact-role">Role (optional)</label>
+            <input class="form-control" id="representative-contact-role" type="text" name="representative-contact-role">
+          </div>
 
 				<div class="list-item-wrapper-vertical">
 					<div class="grid-row">
@@ -50,12 +62,12 @@
 									<option value="5" fsa-type="telephone">TypeTalk</option>
 									<option value="6">Other</option>
 								</select>
-								<input class="form-control" name="operator_contact_type" id="contact-type" type="numerical" style="margin-top: 5px;">
+								<input class="form-control" name="operator_contact_type" id="contact-type" type="numerical">
 							</div>
 							<div class="form-group"></div>
 							<div class="grid-row">
 								<div class="form-group">
-									<button id="add-button" class="button-secondary button-add-another-vertical">Add another</button>
+									<button id="add-button" class="button-secondary button-add-another-vertical">Add another contact for this company</button>
 								</div>
 							</div>
 						</div>

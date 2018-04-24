@@ -1,61 +1,47 @@
 {% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
 
 <main id="content" role="main">
-  <div> <a class="back-link" href="/index.html"><a class="back-link" href="#" onclick="window.history.back()">Back</a></a> </div>
+  <div>
+    <a class="back-link" href="#" onclick="window.history.back()">Back</a>
+  </div>
 
 
   <div class="grid-row">
     <div class="column-two-thirds">
 
 
-      <form>
+      <form id="fsa-checkbox-form" method="get" class="form" action="/reg-pages/business-restaurant-specialist">
         <div class="form-group">
+
+          <h1 class="heading-large">
+            Restaurant, pub or cafe
+          </h1>
           <fieldset>
 
-            <form>
-              <div class="form-group">
+            <legend>
+              <h3 class="heading-medium">Does your business do any of these activities relating to liquor production? </h3>
+              <span class="body-text">Select all that apply</span>
+            </legend>
 
-                <h1 class="heading-large">
-                  Restaurant, pub or cafe
-                </h1>
-                <fieldset>
-                  <form>
-                    <fieldset>
-
-                      <legend>
-                        <h3 class="heading-medium">Does your business do any of these activities relating to liquor production? </h3>
-                        <span class="body-text">Select all that apply</span>
-                      </legend>
-
-                      <div class="multiple-choice">
-                        <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
-                        <label for="waste-type-1">Selling micro-brewed beers and ales to other food businesses</label>
-                      </div>
-                      <div class="multiple-choice">
-                        <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
-                        <label for="waste-type-2">Making your own liquor or spirits</label>
-                      </div>
-                      <div class="multiple-choice">
-                        <input id="waste-type-3" name="waste-types" type="checkbox" value="waste-farm-agricultural">
-                        <label for="waste-type-3">None of these activities</label>
-                      </div>
-
-                    </fieldset>
-                  </form>
-              </div>
-            </form>
-
-            </diov>
-            <div class="grid-row">
-              <a id="operator-continue-button" class="button" href="/name" role="button">Save and continue</a>
+            <div class="multiple-choice">
+              <input id="waste-type-1" name="business_restaurant_liquor" type="checkbox" value="Selling in-house micro-brewed beers and ales to other food businesses">
+              <label for="waste-type-1">Selling in-house micro-brewed beers and ales to other food businesses</label>
             </div>
-
+            <div class="multiple-choice">
+              <input id="waste-type-2" name="business_restaurant_liquor" type="checkbox" value="Making your own liquor or spirits">
+              <label for="waste-type-2">Making your own alcoholic beverages or spirits</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="waste-type-3" name="business_restaurant_liquor" type="checkbox" value="None of these activities">
+              <label for="waste-type-3">None of these activities</label>
+            </div>
 
           </fieldset>
         </div>
+        <div class="grid-row">
+            <input type="submit" class="button" value="Save and continue">
+          </div>
       </form>
-
-
     </div>
   </div>
 </main>

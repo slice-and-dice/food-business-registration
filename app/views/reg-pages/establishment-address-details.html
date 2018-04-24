@@ -29,13 +29,13 @@
 						<div id="type-of-premise-form" class="form-group">
 							<legend>
 								<h1 class="heading-medium">Is this establishment located inside a domestic premises?</h1>
-								<p class="form-hint">A domestic premises is any premises which is not a place of business. For example, a home.</p>
+								<p class="form-hint">A domestic premises is any premises which is a private dwelling. For example, a home.</p>
 								<div class="multiple-choice">
-									<input id="radio-1" type="radio" name="establishmentAddressDetailsDomestic" value="Yes">
+									<input id="radio-1" type="radio" name="domestic_premise" value="true">
 									<label for="radio-1">Yes, it is a domestic premises</label>
 								</div>
 								<div class="multiple-choice">
-									<input id="radio-2" type="radio" name="establishmentAddressDetailsDomestic" value="No">
+									<input id="radio-2" type="radio" name="domestic_premise" value="false">
 									<label for="radio-2">No, it is a business or public premises</label>
 								</div>
 							</legend>
@@ -44,13 +44,16 @@
 							<legend>
 								<h1 class="heading-medium">Is this establishment located inside a secure government facility?</h1>
 							</legend>
+							<p class="form-hint">
+									Secure facilities require visitors to arrange special legal access the building? For example a prison.
+								</p>
 
 							<div class="multiple-choice">
-								<input id="radio-1" type="radio" name="establishmentAddressDetailsEstablishmentInGovFacility" value="yes">
+								<input id="radio-1" type="radio" name="secure_government_facility" value="true">
 								<label for="radio-1">Yes</label>
 							</div>
 							<div class="multiple-choice">
-								<input id="radio-2" type="radio" name="establishmentAddressDetailsEstablishmentInGovFacility" value="no">
+								<input id="radio-2" type="radio" name="secure_government_facility" value="false">
 								<label for="radio-2">No</label>
 							</div>
 						</div>

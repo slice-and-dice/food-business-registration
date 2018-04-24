@@ -9,43 +9,47 @@
 		<div class="column-two-thirds">
 			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
 
-					<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-						You have not selected one of the options below
-					</h2>
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
 
-					<!-- <p>
+				<!-- <p>
 						Optional description of the errors and how to correct them
 					</p> -->
 
-					<ul class="error-summary-list">
-						<li><a href="#example-personal-details">Something's not right here, please check your answer before continuing</a></li>
-					</ul>
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+					</li>
+				</ul>
 
-				</div>
+			</div>
 			<h1 class="heading-medium">Will this establishment do any high risk food production or preservation activities?</h1>
-			<form id="fsa-radio-button-form" method="get" class="form" action="/reg-pages/business-otherdetail">
+			<form id="fsa-radio-button-form" method="get" class="form" action="/business-highrisk-redirect">
 				<div class="form-group">
 					<fieldset>
 						<legend>
-							<p class="form-hint">
-								For example
+							<p>
+								<span class="bold">High risk processes include things like</span>
 								<ul class="list list-bullet">
-									<li>sous-vide cooking</li>
-									<li>fermentation of meats</li>
-									<li>cooking and cooling meat</li>
-									<li>raw or undercooked meat such as meat tartare or rare burgers</li>
 									<li>raw fish such as sushi</li>
-									<li>ceviche</li>
+									<li>raw or undercooked meat such as meat tartare or rare burgers</li>
+									<li>low temperature and water bath cooking such as sous-vide or slow cooking</li>
+									<li>fermentation of meats such as salami or fermented sausages</li>
+									<li>cooking with acid such as ceviche</li>
+									<li>specialist preservation methods such as vacuum packing, canning, salting or air drying</li>
+									<li>cooking and cooling meats to serve cool such as production of ham</li>
+									<li>cook and chill food to be reheated such as production of ready meals</li>
 								</ul>
 							</p>
 							<span class="error-message no-display">You have not selected one of the options below</span>
 						</legend>
 						<div class="multiple-choice">
-							<input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
+							<input id="radio-1" type="radio" name="high_risk_activities" value="true">
 							<label for="radio-1">Yes</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+							<input id="radio-2" type="radio" name="high_risk_activities" value="false">
 							<label for="radio-2">No</label>
 						</div>
 

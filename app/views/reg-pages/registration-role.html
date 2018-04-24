@@ -2,12 +2,14 @@
 
 <main id="content" role="main">
 	<div>
-		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+		<a class="back-link" href="/registration-type">Back</a>
 	</div>
 
 	<div class="grid-row">
 		<div class="column-two-thirds">
+
 			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
 				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
 					You have not selected one of the options below
 				</h2>
@@ -17,26 +19,30 @@
 						<a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
 					</li>
 				</ul>
+
 			</div>
 
-			<h1 class="heading-large">Business activities</h1>
+			<h1 class="heading-medium">What is your role in this food business?</h1>
 
-			<form id="fsa-checkbox-form" method="get" class="form" action="/reg-pages/business-typequestions">
+			<form method="get" class="form" id="fsa-radio-button-form" action="/registration-role-redirect">
 				<div class="form-group">
 					<fieldset>
+
 						<legend>
-							<h3 class="heading-medium">Who will this establishment supply food to?</h3>
-							<span class="body-text">Select all that apply</span>
-							<span class="error-message no-display">You must select at least one option below</span>
+							<span class="error-message no-display">You have not selected one of the options below</span>
 						</legend>
 
 						<div class="multiple-choice">
-							<input id="waste-type-1" name="supplies_to" type="checkbox" value="Other businesses">
-							<label for="waste-type-1">It will supply food to other food businesses</label>
+							<input id="radio-1" type="radio" name="registration_role" value="I operate this food business">
+							<label for="radio-1">I operate it as a sole trader</label>
 						</div>
 						<div class="multiple-choice">
-							<input id="waste-type-2" name="supplies_to" type="checkbox" value="End consumers">
-							<label for="waste-type-2">It will supply food directly to end consumers</label>
+							<input id="radio-2" type="radio" name="registration_role" value="I operate this business in a partnership">
+							<label for="radio-2">I operate it in a partnership</label>
+						</div>
+						<div class="multiple-choice">
+							<input id="radio-3" type="radio" name="registration_role" value="I represent a person, charity or company which operates this business">
+							<label for="radio-3">I represent a person, charity or company which operates it</label>
 						</div>
 
 					</fieldset>

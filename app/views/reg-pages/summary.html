@@ -7,7 +7,8 @@
 
 
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <!-- <div class="column-two-thirds"> -->
+    <div>
 
       <h2 class="heading-medium">
         Please check that the details you entered are correct.
@@ -146,14 +147,28 @@
               <td>
                 <!-- Have a look at routes.js -->
                 <div>{{ data['supplies_toLabel'] }}</div>
-                <div class="bold">{{ data['supplies_to'] }}</div>
+                <ul>
+                    {% for type in data['supplies_to'] %}
+                    <li class="bold">
+                        {{ type }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!-- <div class="bold">{{ data['supplies_to'] }}</div> -->
               </td>
             </tr>
 
             <tr>
               <td>Importing and Exporting</td>
               <td class="bold">
-                <div> {{data['import_export'] }} </div>
+                <!-- <div> {{data['import_export'] }} </div> -->
+                <ul>
+                    {% for type in data['import_export'] %}
+                    <li>
+                        {{ type }}
+                    </li>
+                    {% endfor %}
+                </ul>
               </td>
             </tr>
 
@@ -165,13 +180,20 @@
             <tr>
               <td>Food activities</td>
               <td class="bold">
-                <div>{{ data['food_activities'] }}</div>
+                <!-- <div>{{ data['food_activities'] }}</div> -->
+                <ul>
+                    {% for type in data['food_activities'] %}
+                    <li>
+                        {{ type }}
+                    </li>
+                    {% endfor %}
+                </ul>
               </td>
             </tr>
 
 
             <tr>
-              <td>Additional information</td>
+              <td>Description of food business</td>
               <td class="bold">
                 <div>{{ data['registration_free_text'] }}</div>
               </td>
@@ -180,51 +202,9 @@
         </tbody>
       </table>
 
-      <!--Declaration	-->
-      <div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
-
-        <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
-          You have not selected one of the options below
-        </h2>
-
-        <!-- <p>
-            Optional description of the errors and how to correct them
-          </p> -->
-
-        <ul class="error-summary-list">
-          <li>
-            <a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
-          </li>
-        </ul>
-
-      </div>
-
-      <!-- <div class="form-group"> -->
-
-      <form id="#fsa-checkbox-form" method="POST" action="/reg-pages/confirmation">
-        <div class="form-group">
-          <legend>
-            <h2 class="heading-medium">
-              Declaration
-            </h2>
-
-            <p>I declare that the information I have given on this form is correct and complete to the best of my knowledge
-              and belief.
-            </p>
-            <p>I will notify food authorities of any changes to the business, including closure, within 28 days of the change
-              happening.</p>
-            <p>I understand I will be required to verify this information on an annual basis and I will receive email reminders
-              to do this.</p>
-            <p class="heading-medium">By submitting this registration, I am agreeing to the above statements.</p>
-            <span class="error-message no-display">You have not ticked the box below</span>
-          </legend>
-          <div class="multiple-choice">
-            <input id="radio-1" type="checkbox">
-            <label for="radio-1">I agree </label>
-          </div>
-        </div>
-        <div class="grid-row">
-          <input type="submit" class="button" value="Submit registration">
+      <form id="#fsa-checkbox-form" method="get" action="/reg-pages/declaration">
+        <div class="form-group" style="margin-top: 20px;">
+          <input type="submit" class="button" value="Save and continue">
         </div>
       </form>
 

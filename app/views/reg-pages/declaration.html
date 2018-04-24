@@ -1,0 +1,67 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+  <div>
+    <a class="back-link" href="#" onclick="window.history.back()">Back</a>
+  </div>
+
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <h2 class="heading-medium">
+        Declaration
+      </h2>
+
+      <p>
+        Before submitting this food business registration, please review these statements. Tick each box to agree.
+      </p>
+
+      <div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+
+        <h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+          You have not selected one of the options below
+        </h2>
+
+        <ul class="error-summary-list">
+          <li>
+            <a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <form id="fsa-checkbox-form" method="post" action="/reg-pages/confirmation">
+        <div class="form-group">
+
+          <div class="multiple-choice">
+            <input id="checkbox-1" type="checkbox" name="declaration_1" value="true">
+            <label for="checkbox-1">I declare that the information I have given on this form is correct and complete to the best of my knowledge
+              and belief.</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="checkbox-2" type="checkbox" name="declaration_1" value="true">
+            <label for="checkbox-2">I, or the operator, will notify food authorities of any significant changes to the business activity, including closure, within
+              28 days of the change happening.
+            </label>
+          </div>
+          <div class="multiple-choice">
+            <input id="checkbox-3" type="checkbox" name="declaration_1" value="true">
+            <label for="checkbox-3">I, or the operator, understands the operator is legally responsible for the safety and authenticity of the food being produced
+              or served at this establishment.
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="grid-row">
+            <input type="submit" class="button" value="Submit registration">
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
