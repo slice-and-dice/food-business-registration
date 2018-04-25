@@ -359,9 +359,13 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
       uri: url,
     }
 
+    console.log('options', JSON.stringify(options));
+
     request.post(
       options,
       function (err, httpResponse, body) {
+        console.log('httpResponse', httpResponse);
+
         if (err) {
           return console.error('upload failed:', err);
         }
