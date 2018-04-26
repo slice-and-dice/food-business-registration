@@ -353,26 +353,24 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
 
   if (url) {
 
-    const options = {
-      json: true,
+    const fetchOptions = {
+      method: "POST",
       body: requestData,
-      uri: url,
-    }
+      headers: { 'Content-Type': 'application/json' }
+    };
 
-    console.log('options', JSON.stringify(options));
-
-    request.post(
-      options,
-      function (err, httpResponse, body) {
-        console.log('httpResponse', httpResponse);
-
-        if (err) {
-          return console.error('upload failed:', err);
-        }
-        console.log('Risk engine responded: ', body);
+    fetch(url, fetchOptions)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function(json) {
+        req.session.data.registrationId = json.registrationId;
         next();
-      }
-    );
+      })
+      .catch(function(err) {
+        return console.error('json err', err);
+      });
+
 
   } else {
     next();
