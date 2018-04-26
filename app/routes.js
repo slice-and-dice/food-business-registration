@@ -205,8 +205,8 @@ router.get('/summary-declaration-redirect', function (req, res) {
 
   // req.session.data['openingDateMonth'] = monthMapping[month];
 
-  if (req.session.data['reuseOperatorContactDetails'] && req.session.data['reuseOperatorContactDetails'] === 'yes' && req.session.data['establishment_contact_number'] && req.session.data['establishment_contact_number'].length === 0 && req.session.data['establishment_email'] && req.session.data['establishment_email'].length === 0) {
-    req.session.data['establishment_contact_number'] = req.session.data['operator_contact_type'];
+  if (req.session.data['reuseOperatorContactDetails'] && req.session.data['reuseOperatorContactDetails'] === 'yes' && req.session.data['establishment_contact_type'] && req.session.data['establishment_contact_type'].length === 0 && req.session.data['establishment_email'] && req.session.data['establishment_email'].length === 0) {
+    req.session.data['establishment_contact_type'] = req.session.data['operator_contact_type'];
     req.session.data['establishment_email'] = req.session.data['operator_email'];
   }
 
@@ -279,11 +279,11 @@ router.get('/summary-declaration-redirect', function (req, res) {
   }
 
   if (req.session.data['reuseOperatorContactDetails']) {
-    req.session.data.establishment_contact_number = req.session.data.operator_contact_type;
+    req.session.data.establishment_contact_type = req.session.data.operator_contact_type;
     req.session.data.establishment_email = req.session.data.operator_email;
   }
 
-  console.log('req.session.data', req.session.data);
+  // console.log('req.session.data', req.session.data);
 
   res.redirect('/reg-pages/summary');
 });
@@ -321,30 +321,32 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
     }
   });
 
-  var data = processData(req.session.data);
-
   //Need to do something here to format the dates correctly..
 
-  if (req.session.data['openingDays'] && Array.isArray(req.session.data['openingDays'])) {
-    //Using semicolon as delimiter
-    req.session.data.opening_days = req.session.data.openingDays.join(';');
-  }
+  // if (req.session.data['openingDays'] && Array.isArray(req.session.data['openingDays'])) {
+  //   //Using semicolon as delimiter
+  //   req.session.data.opening_days = req.session.data.openingDays.join(';');
+  // }
 
-  if (req.session.data['import_export'] && Array.isArray(req.session.data['import_export'])) {
-    req.session.data.import_export = req.session.data.import_export.join(';');
-  }
+  // if (req.session.data['import_export'] && Array.isArray(req.session.data['import_export'])) {
+  //   req.session.data.import_export = req.session.data.import_export.join(';');
+  // }
 
-  if (req.session.data['food_activities'] && Array.isArray(req.session.data['food_activities'])) {
-    req.session.data.food_activities = req.session.data.food_activities.join(';');
-  }
+  // if (req.session.data['food_activities'] && Array.isArray(req.session.data['food_activities'])) {
+  //   req.session.data.food_activities = req.session.data.food_activities.join(';');
+  // }
 
-  if (req.session.data['supplies_to'] && Array.isArray(req.session.data['supplies_to'])) {
-    req.session.data.supplies_to = req.session.data.supplies_to.join(';');
-  }
+  // if (req.session.data['supplies_to'] && Array.isArray(req.session.data['supplies_to'])) {
+  //   req.session.data.supplies_to = req.session.data.supplies_to.join(';');
+  // }
 
-  req.session.data.establishment_contact_number = Array.isArray(req.session.data.establishment_contact_number) ? req.session.data.establishment_contact_number : [ req.session.data.establishment_contact_number ];
+  req.session.data.establishment_contact_type = Array.isArray(req.session.data.establishment_contact_type) ? req.session.data.establishment_contact_type : [ req.session.data.establishment_contact_type ];
 
   req.session.data.operator_contact_type = Array.isArray(req.session.data.operator_contact_type) ? req.session.data.operator_contact_type : [ req.session.data.operator_contact_type ];
+
+  var data = processData(req.session.data);
+
+  console.log('data', data);
 
   const requestData = JSON.stringify(Object.assign({
     registrationData: data,
@@ -368,6 +370,8 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
         return res.json();
       })
       .then(function(json) {
+        console.log('json response', json);
+
         req.session.data.registrationId = json.registrationId;
         next();
       })
