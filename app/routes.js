@@ -342,6 +342,10 @@ router.post('/reg-pages/confirmation', function (req, res, next) {
     req.session.data.supplies_to = req.session.data.supplies_to.join(';');
   }
 
+  req.session.data.establishment_contact_number = Array.isArray(req.session.data.establishment_contact_number) ? req.session.data.establishment_contact_number : [ req.session.data.establishment_contact_number ];
+
+  req.session.data.operator_contact_type = Array.isArray(req.session.data.operator_contact_type) ? req.session.data.operator_contact_type : [ req.session.data.operator_contact_type ];
+
   const requestData = JSON.stringify(Object.assign({
     registrationData: data,
     localAuthority: localAuthorityConfig,
