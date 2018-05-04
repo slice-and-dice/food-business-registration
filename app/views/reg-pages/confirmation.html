@@ -1,10 +1,4 @@
-{% extends "layout.html" %}
-
-{% block page_title %}
-  Confirmation page example
-{% endblock %}
-
-{% block content %}
+{% extends "layout.html" %} {% block page_title %} Confirmation page example {% endblock %} {% block content %}
 
 <main id="content" role="main">
 
@@ -16,8 +10,9 @@
           Application complete
         </h1>
         <p class="font-large">
-          Your reference number is <br>
-          <strong class="bold">{{ data['registrationId'] if data['registrationId'] else "HDJ2123F" }}</strong>
+          Your reference number is
+          <br>
+          <strong class="bold">{{ data['fsa-rn'] if data['fsa-rn'] else "GDVR8W-8SMADJ-P6NPQX" }}</strong>
         </p>
       </div>
 
@@ -26,9 +21,12 @@
       </p>
 
       <h2 class="heading-medium">What happens next</h2>
-      <p>We've sent your application to <span class="bold">{{ data['registrationLocalAuthority'] if data['registrationLocalAuthority'] else "Islington Borough Council" }}.</span></p>
+      <p>We've sent your application to
+        <span class="bold">{{ data['registrationLocalAuthority'] if data['registrationLocalAuthority'] else "Islington Borough Council" }}.</span>
+      </p>
       <p>They will contact you either to confirm your registration, or to ask for more information.</p>
-      <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
+      <p>
+        <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
 
 
     </div>

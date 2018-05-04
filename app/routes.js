@@ -160,7 +160,7 @@ router.get("/business-customers-redirect", function(req, res) {
 });
 
 router.get("/summary-declaration-redirect", function(req, res) {
-  console.log("req.session.data");
+  // console.log("req.session.data");
   if (
     req.session.data["supplies_to"] &&
     req.session.data["supplies_to"].length === 1 &&
@@ -336,17 +336,17 @@ router.get("/summary-declaration-redirect", function(req, res) {
 });
 
 router.post("/reg-pages/confirmation", function(req, res, next) {
-  console.log("req.session.data", req.session.data);
+  // console.log("req.session.data", req.session.data);
 
   const localAuthorityConfig = {
-    id: "MAV",
+    id: "4016",
     name: "Malvern Hills District Council"
   };
 
   const pipelineConfig = {
     modules: [
       {
-        url: "https://id-generator.cloudapps.digital/generate",
+        url: "https://fsa-rn.epimorphics.net/fsa-rn/1000/01",
         method: "GET"
       },
       {
@@ -403,7 +403,7 @@ router.post("/reg-pages/confirmation", function(req, res, next) {
 
   var data = processData(req.session.data);
 
-  console.log("data", data);
+  // console.log("data", data);
 
   const requestData = JSON.stringify(
     Object.assign({
@@ -413,6 +413,8 @@ router.post("/reg-pages/confirmation", function(req, res, next) {
       answerIds: answerIds
     })
   );
+
+  console.log(requestData);
 
   const url = process.env.REGISTRATION_SUBMISSION_URL;
 
@@ -430,7 +432,7 @@ router.post("/reg-pages/confirmation", function(req, res, next) {
       .then(function(json) {
         console.log("json response", json);
 
-        req.session.data.registrationId = json.registrationId;
+        req.session.data["fsa-rn"] = json["fsa-rn"];
         next();
       })
       .catch(function(err) {
