@@ -25,7 +25,7 @@
 
       <p>Please give us the details of a person at this company we can speak to about food hygiene and safety.</p>
 
-			<form id="operator-contact-form" method="get" class="form" action="/reg-pages/operator-experience">
+			<form id="operator-contact-form" method="get" class="form" action="/reg-pages/establishment-name">
 				<div class="form-group">
 					<details>
 						<summary>
@@ -40,39 +40,20 @@
         </div>
 
         <div class="form-group">
-            <label class="form-label" for="representative-contact-name">Name of contact</label>
-            <input class="form-control" id="representative-contact-name" type="text" name="representative-contact-name">
+					<label class="form-label" for="representative-contact-name">Name of contact</label>
+					<input class="form-control" id="representative-contact-name" type="text" name="representative-contact-name">
 
-            <div class="big-gap"></div>
+					<div class="big-gap"></div>
 
-            <label class="form-label" for="representative-contact-role">Role (optional)</label>
-            <input class="form-control" id="representative-contact-role" type="text" name="representative-contact-role">
-          </div>
-
-				<div class="list-item-wrapper-vertical">
-					<div class="grid-row">
-						<div class="form-group-compound">
-							<div class="form-group-small contact-type-select">
-								<label class="form-label" for="contact-1">Contact type</label>
-								<select class="form-control" name="operator_contact_type_id" id="contact-1">
-									<option value="1" fsa-type="telephone">Mobile telephone</option>
-									<option value="2" fsa-type="telephone">Home telephone</option>
-									<option value="3" fsa-type="telephone">Work telephone</option>
-									<option value="4" fsa-type="telephone">Text phone</option>
-									<option value="5" fsa-type="telephone">TypeTalk</option>
-									<option value="6">Other</option>
-								</select>
-								<input class="form-control" name="operator_contact_type" id="contact-type" type="numerical">
-							</div>
-							<div class="form-group"></div>
-							<div class="grid-row">
-								<div class="form-group">
-									<button id="add-button" class="button-secondary button-add-another-vertical">Add another contact for this company</button>
-								</div>
-							</div>
-						</div>
-					</div>
+					<label class="form-label" for="representative-contact-role">Role (optional)</label>
+					<input class="form-control" id="representative-contact-role" type="text" name="representative-contact-role" fsa-optional>
 				</div>
+
+				<div class="form-group">
+					<label class="form-label" for="operator_primary_number">Phone number</label>
+					<input class="form-control" id="operator_primary_number" name="operator_primary_number">
+				</div>
+
 				<!-- <div class="grid-row">
 					<div class="form-group">
 						<button id="add-button" class="button-secondary button-add-another-vertical">Add another</button>
