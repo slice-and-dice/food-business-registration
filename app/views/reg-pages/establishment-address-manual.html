@@ -24,7 +24,7 @@
 			<h1 class="heading-large">Establishment address</h1>
 			<p>If you are registering a mobile food business, please use the location where it is normally stored overnight.</p>
 
-			<form id="establishment-address-form" method="get" class="form" action="/reg-pages/establishment-address-select">
+			<form id="establishment-address-form" method="get" class="form" action="/reg-pages/establishment-address-details">
 				<div class="form-group">
 						<details>
 							<summary><span class="summary">What is an establishment?</span></summary>
@@ -37,22 +37,40 @@
 
 				<fieldset>
 					<div class="form-group">
-						<label for="postcode">
-							<span class="form-label">Postcode</span>
+						<label for="establishment_street">
+							<span class="form-label">Building and street</span>
 						</label>
-						<input value="{{data['establishment_postcode']}}" class="form-control" name="establishment_postcode" id="postcode" type="text" autofocus>
-					</div>
+            <input class="form-control" name="establishment_building" id="building" type="text">
+            <div class="big-gap"></div>
+            <input class="form-control" name="establishment_street" id="street" type="text">
+          </div>
+          
+          <div class="form-group">
+            <label for="establishment_town">
+              <span class="form-label">Town or city</span>
+            </label>
+            <input class="form-control" name="establishment_town" id="town" type="text">
+          </div>
 
-					<!-- <div class="grid-row">
-						<a id="find-address-button" class="button" href="#" role="button">Find address</a>
-					</div> -->
-					<div class="form-group">
-						<div class="big-gap"> </div>
-					</div>
-				</fieldset>
-				<div class="form-group">
-					<div class="big-gap"> </div>
-				</div>
+          <div class="form-group">
+              <label for="establishment_county">
+                <span class="form-label">County</span>
+              </label>
+              <input class="form-control" name="establishment_county" id="county" type="text">
+          </div>
+
+          <div class="Postcode">
+              <label for="establishment_county">
+                <span class="form-label">Postcode</span>
+              </label>
+              <input class="form-control" name="establishment_postcode" id="postcode" type="text">
+          </div>
+
+        </fieldset>
+        <div class="big-gap"></div>
+        <div class="big-gap"></div>
+        <div class="big-gap"></div>
+        <div class="big-gap"></div>
 				<div class="grid-row">
 					<input type="submit" class="button" value="Continue">
 				</div>
