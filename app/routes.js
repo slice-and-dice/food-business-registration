@@ -63,6 +63,7 @@ router.get("/opening-days-redirect", function(req, res) {
 
 router.get("/registration-role-redirect", function(req, res) {
   var detail = req.query.registration_role;
+  req.session.registration_role = req.query.registration_role;
 
   switch (detail) {
     case "I operate this food business":
@@ -97,7 +98,7 @@ router.get("/operator-type-redirect", function(req, res) {
   }
 });
 router.get("/operator-contact-redirect", function(req, res) {
-  var detail = req.query.operator_type;
+  var detail = req.session.registration_role;
 
   switch (detail) {
     case "I operate this food business":

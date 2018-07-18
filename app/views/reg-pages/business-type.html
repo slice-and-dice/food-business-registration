@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block page_title %} Register a food business {% endblock %} {% block content %}
+
+<main id="content" role="main">
+
+	<div>
+		<a class="back-link" href="#" onclick="window.history.back()">Back</a>
+	</div>
+	<div class="grid-row">
+		<div class="column-two-thirds">
+			<div class="error-summary no-display" role="alert" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
+				<h2 class="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+					You have not selected one of the options below
+				</h2>
+
+				<ul class="error-summary-list">
+					<li>
+						<a href="#example-personal-details">Something's not right here, please check your answer before continuing</a>
+					</li>
+				</ul>
+			</div>
+
+			<h1 class="heading-large">What kind of food business are you registering?</h1>
+			<form id="business_type-form" method="get" class="form" action="/reg-pages/business-typequestions">
+        <div class="grid-row">
+          <div class="form-group">
+              <span class="form-hint">For example cafe, hospital canteen or commercial bakery</span>
+            </label>
+            <input class="form-control" id="business_type" name="business_type" fsa-optional>
+          </div>
+        </div>
+				</fieldset>
+				<div class="grid-row">
+					<input type="submit" class="button" value="Continue">
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+{% endblock %}

@@ -19,7 +19,7 @@
 				</ul>
 			</div>
 
-			<h1 class="heading-large">Establishment address</h1>
+			<h1 class="heading-large">Where is this establishment located?</h1>
 
 			<!-- <form id="fsa-radio-button-form" method="get" class="form" action="/reg-pages/establishment-address-details"> -->
 			<form id="establishment-address-details-form" method="get" class="form" action="/reg-pages/establishment-contact">
@@ -28,38 +28,34 @@
 
 						<div id="type-of-premise-form" class="form-group">
 							<legend>
-								<h1 class="heading-medium">Is this establishment located inside a domestic premises?</h1>
-								<p class="form-hint">A domestic premises is any premises which is a private dwelling. For example, a home.</p>
+								<details>
+										<summary><span class="summary">What is an establishment?</span></summary>
+										<div class="panel panel-border-narrow">
+			
+											<p class="label">An establishment is the location of your food business, and the food activities taking place there. If it is a mobile food business, please use the location where it is normally stored overnight.<p>
+										</div>
+									</details>
+									<div class="big-gap"></div>
+									<div class="big-gap"></div>
+									<div class="big-gap"></div>
+									<div class="big-gap"></div>
 								<div class="multiple-choice">
-									<input id="radio-1" type="radio" name="domestic_premise" value="true">
-									<label for="radio-1">Yes, it is a domestic premises</label>
+									<input id="radio-1" type="radio" name="establishment_location" value="true">
+									<label for="radio-1">In a place of business or commercial premises</label>
 								</div>
 								<div class="multiple-choice">
-									<input id="radio-2" type="radio" name="domestic_premise" value="false">
-									<label for="radio-2">No, it is a business or public premises</label>
+									<input id="radio-2" type="radio" name="establishment_location" value="false">
+									<label for="radio-2">In a mobile or moveable premises</label>
 								</div>
+								<div class="multiple-choice">
+										<input id="radio-3" type="radio" name="establishment_location" value="false">
+										<label for="radio-3">In a home or domestic premises</label>
+									</div>
 							</legend>
-						</div>
-						<div id="establishment-in-gov-facility-form" class="form-group">
-							<legend>
-								<h1 class="heading-medium">Is this establishment located inside a secure government facility?</h1>
-							</legend>
-							<p class="form-hint">
-									Secure facilities require visitors to arrange special legal access the building? For example a prison.
-								</p>
-
-							<div class="multiple-choice">
-								<input id="radio-1" type="radio" name="secure_government_facility" value="true">
-								<label for="radio-1">Yes</label>
-							</div>
-							<div class="multiple-choice">
-								<input id="radio-2" type="radio" name="secure_government_facility" value="false">
-								<label for="radio-2">No</label>
-							</div>
 						</div>
 					</fieldset>
 					<div class="grid-row">
-						<input type="submit" class="button" value="Save and continue">
+						<input type="submit" class="button" value="Continue">
 					</div>
 				<!-- </div> -->
 			</form>
