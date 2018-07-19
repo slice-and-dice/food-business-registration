@@ -4,30 +4,231 @@
 
   <div class="grid-row">
     <div class="column-two-thirds">
+        <h1 class="heading-large">Your food business registration confirmation</h1>
+        <p>Thank you for submitting your food business registration. Your registration has been sent to <span class="bold">{{ data['registrationLocalAuthority'] if data['registrationLocalAuthority'] else "Rushmoor Borough Council" }}.</span> To contact the food team at your Local Council please email <span class="bold">food@rushmoorboroughcouncil.gov.uk</span></p>
 
       <div class="govuk-box-highlight">
-        <h1 class="heading-xlarge">
-          Application complete
-        </h1>
         <p class="font-large">
-          Your reference number is
+            Your unique food business registration number is
           <br>
           <strong class="bold">{{ data['fsa-rn'] if data['fsa-rn'] else "GDVR8W-8SMADJ-P6NPQX" }}</strong>
         </p>
       </div>
+      <p class="bold">Submitted on</p>
+      <p>19 Jul 2018</p>
 
-      <p>
-        We have sent you a confirmation email.
-      </p>
+      <p class="bold">Responsible Local Authority</p>
+      <p>Bristol City Council</p>
 
-      <h2 class="heading-medium">What happens next</h2>
-      <p>We've sent your application to
-        <span class="bold">{{ data['registrationLocalAuthority'] if data['registrationLocalAuthority'] else "Islington Borough Council" }}.</span>
-      </p>
-      <p>They will contact you either to confirm your registration, or to ask for more information.</p>
-      <p>
-        <a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
+      <h2 class="heading-large">What's next?</h2>
+      <div class="panel panel-border-wide">
+        <p class="heading-small">You may receive an unannounced food inspection from your local council soon after you start trading. The council may contact you before the inspection to discuss how your business operates or to offer advice. </p>
+      </div>
 
+      <p>Meanwhile, there are some things you can do to help prepare for the opening of your business opening.</p>
+      <p><a href="https://www.food.gov.uk/business-guidance">Food safety and how to run a food business (including Northern Ireland)</a></p>
+      <p><a href="https://www.businesscompanion.info/en/in-depth-guides">Standards guidance for England and Wales</a></p>
+      <p><a href="https://www.food.gov.uk/business-guidance/food-hygiene-ratings-for-businesses">How to achieve a high FHRS score and how to appeal</a></p>
+      <p><a href="https://www.gov.uk/guidance/local-regulation-primary-authority">Do you qualify for primary authority partnership and how to get one</a></p>
+
+      <table>
+          <tbody>
+            <tr>
+              <td class="bold">Operator details</td>
+              <td></td>
+            </tr>
+  
+            <tr>
+              <td>Type of operator</td>
+              <td class="bold">{{ data['operator_type'] }}</td>
+            </tr>
+  
+            <tr>
+              <td>Name</td>
+              <td class="bold">{{ data['operator_first_name'] if data['operator_first_name'] }} {{ data['operator_last_name'] if data['operator_last_name']}}
+              {{ data['operator_charity_name'] if data['operator_charity_name']}}
+              {{ data['operator_company_name'] if data['operator_company_name']}}</td>
+            </tr>
+  
+            <div>
+            {% if data['operator_charity_number'] %}
+              <tr>
+                  <td>{{ "Charity number" if data['operator_charity_number'] }} {{ "Companys house number" if data['operator_company_house_number']}}</td>
+                  <td class="bold">{{ data['operator_charity_number'] if data['operator_charity_number']}} {{ data['operator_company_house_number'] if data['operator_company_house_number']}}</td>
+              </tr>
+            {% endif %}
+            </div>
+            <div>
+                {% if data['operator_company_house_number'] %}
+                  <tr>
+                      <td>{{ "Charity number" if data['operator_charity_number'] }} {{ "Company number" if data['operator_company_house_number']}}</td>
+                      <td class="bold">{{ data['operator_charity_number'] if data['operator_charity_number']}} {{ data['operator_company_house_number'] if data['operator_company_house_number']}}</td>
+                  </tr>
+                {% endif %}
+                </div>
+  
+            <tr>
+              <td>Address</td>
+              <td class="bold">
+                <div>{{ data['operator_first_line'] }}</div>
+                <div>Petty France</div>
+                <div>London</div>
+                <div>{{ data['operator_postcode'] }}</div>
+              </td>
+            </tr>
+  
+            <tr>
+              <td>{{"Designated contact" if data['representative-contact-role'] else "Contact"}}</td>
+              <td class="bold">
+                <div class="form-hint">
+                    {{ data['representative-contact-name']}} {{"•" if data['representative-contact-role']}}
+                    {{ data['representative-contact-role']}}
+                </div>
+                <div>{{ data['operator_primary_number'] }}</div>
+                <div>{{ data['operator_email'] }}</div>
+                <!-- <div>
+                  <label class="form-hint-small">Mobile</label>
+                </div> -->
+              </td>
+            </tr>
+            <!--Establishment details-->
+  
+            <tr>
+              <td class="bold">Establishment details</td>
+              <td></td>
+            </tr>
+  
+            <tr>
+              <td>Establishment</td>
+              <td class="bold">{{ data['establishment_name'] }}</td>
+            </tr>
+  
+            <tr>
+              <td>Address</td>
+              <td class="bold">
+                  <div>{{ data['establishmentAddressLine1'] }}</div>
+                  <div>{{ data['establishmentAddressLine2'] }}</div>
+                  <div>{{ data['establishment_postcode'] }}</div>
+                  <div>{{ data['establishmentAddressDoNotKnow'] }}</div>
+              </td>
+            </tr>
+            <tr>
+              <td>Email address</td>
+              <td class="bold">{{ data['establishment_email'] }}</td>
+            </tr>
+            <tr>
+                <td>Phone number</td>
+                <td class="bold">
+                    <div>{{ data['establishment_primary_number'] }}</div>
+                    <div>{{ data['establishment_secondary_number'] }}</div>
+                </td>
+              </tr>
+            <!-- <tr>
+              <td>Domestic premises</td>
+              <td class="bold">
+                {% if  data['domestic_premise'] === "true" %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </td>
+            </tr>
+            <tr> -->
+            <tr>
+              <!-- <td>Opened on</td> -->
+              <td>{{ data['openingDateLabel'] }}</td>
+              <td class="bold">{{ data['trading_date'] }}</td>
+            </tr>
+            <!-- <tr>
+              <td>Opening days and hours</td>
+              <td class="bold">
+                {% if data['openingDaysIrregular'] === "Irregular opening hours" %}
+                  <p>Irregular opening hours:</p>
+                  <p>{{ data['openingDaysIrregularDescription'] }}</p>
+                {% else %}
+                <ul>
+                  {% for day in data['openingDays'] %}
+                    {% if day !== "_unchecked" %}
+                      <li>{{ day }}:
+                        {% if data['openCloseSameTimes'] === "true" %}
+                          {{ data['opening_hours'] }} - {{ data['closing_hours'] }}
+                        {% else %}
+                          {{ data['opening_hours_' + day.toLowerCase() ] }} - {{ data['closing_hours_' + day.toLowerCase() ] }}
+                        {% endif %}
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </td>
+            </tr> -->
+  
+  
+            <!--Food activities-->
+            <tr>
+                <td class="bold">Food activities</td>
+                <td></td>
+              </tr>
+  
+              <tr>
+                <td>Customers</td>
+                <td>
+                  <!-- Have a look at routes.js -->
+                  <!-- <div>{{ data['supplies_toLabel'] }}</div> -->
+                  <ul>
+                      {% for type in data['supplies_to'] %}
+                      <li class="bold">
+                          {{ type }}
+                      </li>
+                      {% endfor %}
+                  </ul>
+                  <!-- <div class="bold">{{ data['supplies_to'] }}</div> -->
+                </td>
+              </tr>
+  
+              <tr>
+                <td>Importing and Exporting</td>
+                <td class="bold">
+                  <!-- <div> {{data['import_export'] }} </div> -->
+                  <ul>
+                      {% for type in data['import_export'] %}
+                      <li>
+                          {{ type }}
+                      </li>
+                      {% endfor %}
+                  </ul>
+                </td>
+              </tr>
+  
+              <tr>
+                <td>Business type</td>
+                <td class="bold">{{ data['business_type'] }}</td>
+              </tr>
+  
+              <!-- <tr>
+                <td>Food activities</td>
+                <td class="bold">
+                  <!-- <div>{{ data['food_activities'] }}</div> -->
+                  <ul>
+                      {% for type in data['food_activities'] %}
+                      <li>
+                          {{ type }}
+                      </li>
+                      {% endfor %}
+                  </ul>
+                </td>
+              </tr> -->
+  
+  
+              <tr>
+                <td>Additional details</td>
+                <td class="bold">
+                  <div>{{ data['registration_free_text'] }}</div>
+                </td>
+              </tr>
+  
+          </tbody>
+        </table>
 
     </div>
   </div>

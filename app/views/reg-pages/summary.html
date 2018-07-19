@@ -7,15 +7,12 @@
 
 
   <div class="grid-row">
-    <!-- <div class="column-two-thirds"> -->
+    <div class="column-two-thirds">
     <div>
 
       <h2 class="heading-medium">
         Please check that the details you entered are correct.
       </h2>
-
-      <!--Name Details table-->
-      <!--Operator details-->
       <table>
         <tbody>
           <tr>
@@ -24,24 +21,38 @@
           </tr>
 
           <tr>
-            <td>Registration type</td>
-            <td class="bold">{{ data['registration_type'] }}</td>
+            <td>Type of operator</td>
+            <td class="bold">{{ data['operator_type'] }}</td>
           </tr>
 
           <tr>
             <td>Name</td>
-            <td class="bold">{{ data['operator_first_name'] }} {{ data['operator_last_name'] }}</td>
+            <td class="bold">{{ data['operator_first_name'] if data['operator_first_name'] }} {{ data['operator_last_name'] if data['operator_last_name']}}
+            {{ data['operator_charity_name'] if data['operator_charity_name']}}
+            {{ data['operator_company_name'] if data['operator_company_name']}}</td>
           </tr>
 
-          <tr>
-            <td>Operator type</td>
-            <td class="bold">{{ data['registration_role'] }}</td>
-          </tr>
+          <div>
+          {% if data['operator_charity_number'] %}
+            <tr>
+                <td>{{ "Charity number" if data['operator_charity_number'] }} {{ "Companys house number" if data['operator_company_house_number']}}</td>
+                <td class="bold">{{ data['operator_charity_number'] if data['operator_charity_number']}} {{ data['operator_company_house_number'] if data['operator_company_house_number']}}</td>
+            </tr>
+          {% endif %}
+          </div>
+          <div>
+              {% if data['operator_company_house_number'] %}
+                <tr>
+                    <td>{{ "Charity number" if data['operator_charity_number'] }} {{ "Company number" if data['operator_company_house_number']}}</td>
+                    <td class="bold">{{ data['operator_charity_number'] if data['operator_charity_number']}} {{ data['operator_company_house_number'] if data['operator_company_house_number']}}</td>
+                </tr>
+              {% endif %}
+              </div>
 
           <tr>
-            <td>Operator home address</td>
+            <td>Address</td>
             <td class="bold">
-              <!-- <div>Hill Cottage</div> -->
+              <div>{{ data['operator_first_line'] }}</div>
               <div>Petty France</div>
               <div>London</div>
               <div>{{ data['operator_postcode'] }}</div>
@@ -49,22 +60,19 @@
           </tr>
 
           <tr>
-            <td>Contact number</td>
+            <td>{{"Designated contact" if data['representative-contact-role'] else "Contact"}}</td>
             <td class="bold">
-              <div>{{ data['operator_contact_type'] }}</div>
-              <div>
-                <label class="form-hint-small">Mobile</label>
+              <div class="form-hint">
+                  {{ data['representative-contact-name']}} {{"•" if data['representative-contact-role']}}
+                  {{ data['representative-contact-role']}}
               </div>
+              <div>{{ data['operator_primary_number'] }}</div>
+              <div>{{ data['operator_email'] }}</div>
+              <!-- <div>
+                <label class="form-hint-small">Mobile</label>
+              </div> -->
             </td>
           </tr>
-
-          <tr>
-            <td>Email address</td>
-            <td class="bold">{{ data['operator_email'] }}</td>
-          </tr>
-
-
-
           <!--Establishment details-->
 
           <tr>
@@ -73,12 +81,12 @@
           </tr>
 
           <tr>
-            <td>Establishment name</td>
+            <td>Establishment</td>
             <td class="bold">{{ data['establishment_name'] }}</td>
           </tr>
 
           <tr>
-            <td>Establishment address</td>
+            <td>Address</td>
             <td class="bold">
                 <div>{{ data['establishmentAddressLine1'] }}</div>
                 <div>{{ data['establishmentAddressLine2'] }}</div>
@@ -87,6 +95,17 @@
             </td>
           </tr>
           <tr>
+            <td>Email address</td>
+            <td class="bold">{{ data['establishment_email'] }}</td>
+          </tr>
+          <tr>
+              <td>Phone number</td>
+              <td class="bold">
+                  <div>{{ data['establishment_primary_number'] }}</div>
+                  <div>{{ data['establishment_secondary_number'] }}</div>
+              </td>
+            </tr>
+          <!-- <tr>
             <td>Domestic premises</td>
             <td class="bold">
               {% if  data['domestic_premise'] === "true" %}
@@ -96,22 +115,13 @@
               {% endif %}
             </td>
           </tr>
-          <tr>
-            <td>Establishment email address</td>
-            <!-- <td class="bold">hello@waterfrontsandwiches.co.uk</td> -->
-            <td class="bold">{{ data['establishment_email'] }}</td>
-            <!-- TODO - Add in logic for is this same as operator contact details?? -->
-          </tr>
-          <tr>
-            <td>Establishment phone number</td>
-            <td class="bold">{{ data['establishment_contact_number'] }}</td>
-          </tr>
+          <tr> -->
           <tr>
             <!-- <td>Opened on</td> -->
             <td>{{ data['openingDateLabel'] }}</td>
             <td class="bold">{{ data['trading_date'] }}</td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td>Opening days and hours</td>
             <td class="bold">
               {% if data['openingDaysIrregular'] === "Irregular opening hours" %}
@@ -133,7 +143,7 @@
               </ul>
               {% endif %}
             </td>
-          </tr>
+          </tr> -->
 
 
           <!--Food activities-->
@@ -143,10 +153,10 @@
             </tr>
 
             <tr>
-              <td>Customer type</td>
+              <td>Customers</td>
               <td>
                 <!-- Have a look at routes.js -->
-                <div>{{ data['supplies_toLabel'] }}</div>
+                <!-- <div>{{ data['supplies_toLabel'] }}</div> -->
                 <ul>
                     {% for type in data['supplies_to'] %}
                     <li class="bold">
@@ -177,7 +187,7 @@
               <td class="bold">{{ data['business_type'] }}</td>
             </tr>
 
-            <tr>
+            <!-- <tr>
               <td>Food activities</td>
               <td class="bold">
                 <!-- <div>{{ data['food_activities'] }}</div> -->
@@ -189,11 +199,11 @@
                     {% endfor %}
                 </ul>
               </td>
-            </tr>
+            </tr> -->
 
 
             <tr>
-              <td>Description of food business</td>
+              <td>Additional details</td>
               <td class="bold">
                 <div>{{ data['registration_free_text'] }}</div>
               </td>
@@ -204,11 +214,13 @@
 
       <form id="#fsa-checkbox-form" method="get" action="/reg-pages/declaration">
         <div class="form-group" style="margin-top: 20px;">
-          <input type="submit" class="button" value="Save and continue">
+          <input type="submit" class="button" value="Continue">
         </div>
       </form>
 
     </div>
+
+  </div>
   </div>
 </main>
 

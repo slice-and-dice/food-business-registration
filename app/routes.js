@@ -67,9 +67,13 @@ router.get("/registration-role-redirect", function(req, res) {
 
   switch (detail) {
     case "I operate this food business":
+      req.session.data.operator_type = "Sole trader"
+      console.log(req.session.data.operator_type);
       res.redirect("/reg-pages/soletrader-name");
       break;
     case "I operate this business in a partnership":
+      req.session.data.operator_type = "Partnership"
+      console.log(req.session.data.operator_type);
       res.redirect("/reg-pages/soletrader-name");
       break;
     case "I represent a person, charity or company which operates this business":
@@ -82,15 +86,17 @@ router.get("/registration-role-redirect", function(req, res) {
 
 router.get("/operator-type-redirect", function(req, res) {
   var detail = req.query.operator_type;
-
+  req.session.data.operator_type = req.query.operator_type;
   switch (detail) {
     case "personOperatesBusiness":
       res.redirect("/reg-pages/soletrader-name");
       break;
     case "companyOperatesBusiness":
+      req.session.data.operator_type = "Company"
       res.redirect("/reg-pages/ltdcompany-name");
       break;
     case "charityOperatesBusiness":
+      req.session.data.operator_type = "Charity"
       res.redirect("/reg-pages/charity-name");
       break;
     default:
@@ -215,6 +221,8 @@ router.get("/summary-declaration-redirect", function(req, res) {
       req.session.data["operator_contact_type"];
     req.session.data["establishment_email"] =
       req.session.data["operator_email"];
+    req.session.data["establishment_primary_number"] = req.session.data["operator_primary_number"];
+    req.session.data["establishment_secondary_nubmer"] = req.session.data["operator_secondary_nubmer"]
   }
 
   if (
@@ -329,9 +337,10 @@ router.get("/summary-declaration-redirect", function(req, res) {
     req.session.data.establishment_contact_type =
       req.session.data.operator_contact_type;
     req.session.data.establishment_email = req.session.data.operator_email;
+    req.session.data["establishment_primary_number"] = req.session.data["operator_primary_number"];
+    req.session.data["establishment_secondary_nubmer"] = req.session.data["operator_secondary_nubmer"]
   }
-
-  // console.log('req.session.data', req.session.data);
+  console.log('req.session.data', req.session.data);
 
   res.redirect("/reg-pages/summary");
 });
